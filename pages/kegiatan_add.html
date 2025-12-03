@@ -1,0 +1,60 @@
+<div id="laman-kegiatan" class="max-w-xl mx-auto mt-8 space-y-6">
+  <h2 class="text-xl font-bold text-blue-700 dark:text-blue-200">Absensi Kegiatan</h2>
+
+  <!-- Jenis Kegiatan -->
+  <div>
+    <label class="block mb-1 font-medium text-gray-800 dark:text-gray-200">Jenis Kegiatan</label>
+    <select id="jenisKegiatan" class="w-full px-3 py-2 border rounded bg-white dark:bg-gray-800 text-gray-800 dark:text-gray-100">
+      <option value="Sholat Subuh">Sholat Subuh</option>
+      <option value="Sholat Dzuhur">Sholat Dzuhur</option>
+      <option value="Sholat Ashar">Sholat Ashar</option>
+      <option value="Sholat Maghrib">Sholat Maghrib</option>
+      <option value="Sholat Isya">Sholat Isya</option>
+      <option value="Sholat Dhuha">Sholat Dhuha</option>
+      <option value="Sholat Tahajud">Sholat Tahajud</option>
+      <option value="Mengerjakan PR">Mengerjakan PR</option>
+      <option value="Belajar Mandiri">Belajar Mandiri</option>
+      <option value="Kegiatan Ekstrakurikuler">Kegiatan Ekstrakurikuler</option>
+      <option value="Lainnya">Lainnya</option>
+    </select>
+  </div>
+
+  <!-- Keterangan -->
+  <div>
+    <label class="block mb-1 font-medium text-gray-800 dark:text-gray-200">Keterangan (Opsional)</label>
+    <textarea id="keterangan" class="w-full px-3 py-2 border rounded bg-white dark:bg-gray-800 text-gray-800 dark:text-gray-100" placeholder="Deskripsi kegiatan"></textarea>
+  </div>
+
+  <!-- Capture Info -->
+  <div>
+    <label class="block mb-1 font-medium text-gray-800 dark:text-gray-200">Foto Kegiatan</label>
+    <p id="captureNotice" class="text-sm text-red-500">Silakan ambil foto terlebih dahulu.</p>
+    <button id="openCameraBtn" class="mt-2 px-4 py-2 bg-blue-500 text-white rounded">Ambil Foto</button>
+    <img id="previewImage" class="mt-4 rounded border hidden max-w-xs" />
+  </div>
+
+  <!-- Lokasi -->
+  <div>
+    <label class="block mb-1 font-medium text-gray-800 dark:text-gray-200">Lokasi</label>
+    <div id="locationPreview" class="text-sm text-gray-700 dark:text-gray-300 mb-2">Mengambil lokasi...</div>
+    <button id="refreshLocationBtn" class="mb-2 px-3 py-1 bg-gray-200 dark:bg-gray-700 text-sm rounded">Refresh Lokasi</button>
+    <iframe id="mapPreview" class="w-full h-48 rounded border" loading="lazy"></iframe>
+  </div>
+
+  <!-- Waktu -->
+  <div>
+    <label class="block mb-1 font-medium text-gray-800 dark:text-gray-200">Waktu Kegiatan</label>
+    <input type="text" id="waktu" readonly class="w-full px-3 py-2 border rounded bg-gray-100 dark:bg-gray-800 text-gray-800 dark:text-gray-100">
+  </div>
+
+  <button id="submitKegiatan" disabled class="w-full bg-gray-400 text-white py-2 rounded cursor-not-allowed">Simpan Kegiatan</button>
+</div>
+
+<!-- Popup Modal Kamera -->
+<div id="cameraModal" class="fixed inset-0 bg-black/60 flex items-center justify-center hidden z-50">
+  <div class="bg-white p-4 rounded shadow-lg max-w-sm w-full">
+    <video id="video" autoplay class="w-full rounded border mb-4"></video>
+    <canvas id="canvas" class="hidden"></canvas>
+    <button id="captureBtn" class="bg-blue-600 text-white px-4 py-2 rounded w-full">Capture</button>
+  </div>
+</div>

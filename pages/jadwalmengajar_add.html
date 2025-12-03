@@ -1,0 +1,78 @@
+<div class="max-w-xl mx-auto mt-8">
+  <h2 class="text-xl font-bold mb-4 text-blue-700 dark:text-blue-200">Tambah Jadwal Mengajar</h2>
+  <form id="addJadwalForm" class="space-y-4">
+    <div>
+      <label class="block mb-1 font-medium text-gray-800 dark:text-gray-200">Jurusan</label>
+      <select id="jurusan" class="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100" required>
+        <option value="">Pilih Jurusan</option>
+        <!-- Option Jurusan -->
+      </select>  
+    </div>
+    <div>
+      <label class="block mb-1 font-medium text-gray-800 dark:text-gray-200">Mata Pelajaran</label>
+      <select id="mapel" class="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100" required>
+        <option value="">Pilih Mapel</option>
+        <!-- Option Mapel -->
+      </select>  
+    </div>
+    <div class="p-4 bg-white dark:bg-gray-800 rounded-2xl shadow-md">
+      <label class="block mb-1 font-medium text-gray-800 dark:text-gray-200">Semester</label>
+      <div class="grid grid-cols-3 gap-2 mt-2" id="semesterContainer">
+        <!-- checkbox semester akan muncul di sini -->
+      </div>
+    </div>
+    <div class="flex flex-col md:flex-row gap-8 p-4 bg-white dark:bg-gray-800 rounded-2xl shadow-md">
+    
+      <!-- HARI -->
+      <div class="w-full">
+        <label class="block mb-2 text-lg font-semibold text-gray-800 dark:text-white">Hari</label>
+        <div class="grid grid-cols-2 sm:grid-cols-3 gap-3">
+          <!-- Checkbox Hari -->
+          <label class="inline-flex items-center space-x-2">
+            <input type="checkbox" class="form-checkbox text-blue-600 dark:text-blue-400" name="hari" value="Senin">
+            <span class="text-sm text-gray-700 dark:text-gray-200">Senin</span>
+          </label>
+          <label class="inline-flex items-center space-x-2">
+            <input type="checkbox" class="form-checkbox text-blue-600 dark:text-blue-400" name="hari" value="Selasa">
+            <span class="text-sm text-gray-700 dark:text-gray-200">Selasa</span>
+          </label>
+          <label class="inline-flex items-center space-x-2">
+            <input type="checkbox" class="form-checkbox text-blue-600 dark:text-blue-400" name="hari" value="Rabu">
+            <span class="text-sm text-gray-700 dark:text-gray-200">Rabu</span>
+          </label>
+          <label class="inline-flex items-center space-x-2">
+            <input type="checkbox" class="form-checkbox text-blue-600 dark:text-blue-400" name="hari" value="Kamis">
+            <span class="text-sm text-gray-700 dark:text-gray-200">Kamis</span>
+          </label>
+          <label class="inline-flex items-center space-x-2">
+            <input type="checkbox" class="form-checkbox text-blue-600 dark:text-blue-400" name="hari" value="Jumat">
+            <span class="text-sm text-gray-700 dark:text-gray-200">Jumat</span>
+          </label>
+          <label class="inline-flex items-center space-x-2">
+            <input type="checkbox" class="form-checkbox text-blue-600 dark:text-blue-400" name="hari" value="Sabtu">
+            <span class="text-sm text-gray-700 dark:text-gray-200">Sabtu</span>
+          </label>
+          <label class="inline-flex items-center space-x-2">
+            <input type="checkbox" class="form-checkbox text-blue-600 dark:text-blue-400" name="hari" value="Minggu">
+            <span class="text-sm text-gray-700 dark:text-gray-200">Minggu</span>
+          </label>
+        </div>
+      </div>
+    </div>
+    
+
+     <!-- Jam Mulai -->
+     <div>
+      <label class="block mb-1 font-medium text-gray-800 dark:text-gray-200">Jam Mulai</label>
+      <input type="text" id="jamMulai" placeholder="Contoh: 07:30" class="w-full px-3 py-2 border rounded bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100" required>
+    </div>
+
+    <!-- Jam Selesai -->
+    <div>
+      <label class="block mb-1 font-medium text-gray-800 dark:text-gray-200">Jam Selesai</label>
+      <input type="text" id="jamSelesai" placeholder="Contoh: 09:00" class="w-full px-3 py-2 border rounded bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100" required>
+    </div>
+    
+    <button type="submit" class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded">Submit</button>
+  </form>
+</div>

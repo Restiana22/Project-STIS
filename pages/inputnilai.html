@@ -1,0 +1,214 @@
+<div class="p-6 min-h-screen dark:bg-gray-900 transition">
+  <h2 class="text-2xl font-bold mb-6 text-gray-800 dark:text-white">Manajemen Nilai</h2>
+
+  <!-- Tab Navigation -->
+  <div class="mb-6">
+    <div class="flex border-b border-gray-200 dark:border-gray-700">
+      <button id="tab-upload" class="tab-button active py-2 px-4 font-medium border-b-2 border-blue-500 text-blue-600">Upload Excel</button>
+      <button id="tab-manual" class="tab-button py-2 px-4 font-medium text-gray-500 hover:text-gray-700">Input Manual</button>
+      <button id="tab-view" class="tab-button py-2 px-4 font-medium text-gray-500 hover:text-gray-700">Lihat Nilai</button>
+      <button id="tab-rekap" class="tab-button py-2 px-4 font-medium text-gray-500 hover:text-gray-700">Rekap Nilai</button>
+    </div>
+  </div>
+
+  <!-- Upload Excel Tab -->
+  <div id="content-upload" class="tab-content space-y-4">
+    <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow">
+      <h3 class="text-lg font-semibold mb-4 text-gray-800 dark:text-white">Upload Nilai via Excel</h3>
+      <div class="space-y-4">
+        <div class="flex gap-3 flex-wrap">
+          <button id="download-btn" class="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-4 py-2 rounded shadow flex items-center gap-2">
+            <i class="fas fa-download"></i> Download Template
+          </button>
+          <button id="upload-btn" class="bg-green-600 hover:bg-green-700 text-white font-semibold px-4 py-2 rounded shadow flex items-center gap-2">
+            <i class="fas fa-upload"></i> Proses & Simpan Nilai
+          </button>
+        </div>
+        <input type="file" id="excel-file" accept=".xlsx, .xls" 
+               class="block w-full text-sm border border-gray-300 dark:border-gray-700 rounded px-3 py-2 bg-white dark:bg-gray-800 text-gray-800 dark:text-white" />
+      </div>
+    </div>
+
+    <!-- Status Upload -->
+    <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow">
+      <h3 class="text-lg font-semibold mb-3 text-gray-800 dark:text-white">Status Upload</h3>
+      <ul id="status-list" class="space-y-2 max-h-60 overflow-y-auto"></ul>
+    </div>
+  </div>
+
+  <!-- Input Manual Tab -->
+  <div id="content-manual" class="tab-content hidden space-y-4">
+    <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow">
+      <h3 class="text-lg font-semibold mb-4 text-gray-800 dark:text-white">Input Nilai Manual</h3>
+      
+      <!-- Filter Kelas -->
+      <div class="mb-6 p-4 bg-gray-50 dark:bg-gray-700 rounded-lg">
+        <h4 class="text-md font-semibold mb-3 text-gray-800 dark:text-white">Filter Kelas</h4>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <div>
+            <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Jurusan</label>
+            <select id="filter-jurusan" class="w-full border border-gray-300 dark:border-gray-600 rounded px-3 py-2 bg-white dark:bg-gray-700 text-gray-800 dark:text-white">
+              <option value="">Semua Jurusan</option>
+            </select>
+          </div>
+          
+          <div>
+            <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Semester</label>
+            <select id="filter-semester" class="w-full border border-gray-300 dark:border-gray-600 rounded px-3 py-2 bg-white dark:bg-gray-700 text-gray-800 dark:text-white">
+              <option value="">Semua Semester</option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+              <option value="6">6</option>
+            </select>
+          </div>
+          
+          <div class="flex items-end">
+            <button type="button" id="filter-siswa" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold px-4 py-2 rounded">
+              Filter Siswa
+            </button>
+          </div>
+        </div>
+      </div>
+      
+      <form id="manual-form" class="space-y-4">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+          <div>
+            <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Siswa</label>
+            <select id="siswa-select" class="w-full border border-gray-300 dark:border-gray-600 rounded px-3 py-2 bg-white dark:bg-gray-700 text-gray-800 dark:text-white" required>
+              <option value="">Pilih Siswa</option>
+            </select>
+          </div>
+          <div>
+            <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Mata Pelajaran</label>
+            <select id="mapel-select" class="w-full border border-gray-300 dark:border-gray-600 rounded px-3 py-2 bg-white dark:bg-gray-700 text-gray-800 dark:text-white" required>
+              <option value="">Pilih Mapel</option>
+            </select>
+          </div>
+          <div>
+            <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Jenis Nilai</label>
+            <select id="jenis-nilai" class="w-full border border-gray-300 dark:border-gray-600 rounded px-3 py-2 bg-white dark:bg-gray-700 text-gray-800 dark:text-white" required>
+              <option value="harian">Harian</option>
+              <option value="tugas">Tugas</option>
+              <option value="uts">UTS</option>
+              <option value="uas">UAS</option>
+              <option value="praktikum">Praktikum</option>
+            </select>
+          </div>
+          <div>
+            <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Semester</label>
+            <select id="semester" class="w-full border border-gray-300 dark:border-gray-600 rounded px-3 py-2 bg-white dark:bg-gray-700 text-gray-800 dark:text-white" required>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+              <option value="6">6</option>
+            </select>
+          </div>
+          <div>
+            <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Tahun Ajaran</label>
+            <input type="text" id="tahun-ajaran" value="2024"
+                   class="w-full border border-gray-300 dark:border-gray-600 rounded px-3 py-2 bg-white dark:bg-gray-700 text-gray-800 dark:text-white" required>
+          </div>
+          <div>
+            <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Nilai (0-100)</label>
+            <input type="number" id="nilai-input" min="0" max="100" step="0.1" 
+                   class="w-full border border-gray-300 dark:border-gray-600 rounded px-3 py-2 bg-white dark:bg-gray-700 text-gray-800 dark:text-white" 
+                   placeholder="0-100" required>
+          </div>
+        </div>
+
+        <div class="flex space-x-3">
+          <button type="submit" class="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-4 py-2 rounded shadow flex items-center gap-2">
+            <i class="fas fa-save"></i> Simpan Nilai
+          </button>
+          <button type="button" id="reset-form" class="bg-gray-600 hover:bg-gray-700 text-white font-semibold px-4 py-2 rounded shadow flex items-center gap-2">
+            <i class="fas fa-redo"></i> Reset
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+
+  <div class="mt-2">
+    <p id="filter-info" class="text-sm text-gray-600 dark:text-gray-400">
+      (${allSiswa.length} siswa ditemukan)
+    </p>
+  </div>
+
+  <!-- View Nilai Tab -->
+  <div id="content-view" class="tab-content hidden space-y-4">
+    <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow">
+      <h3 class="text-lg font-semibold mb-4 text-gray-800 dark:text-white">Daftar Nilai</h3>
+      
+      <div class="mb-4 flex gap-3">
+        <input type="text" id="search-nilai" placeholder="Cari siswa atau mapel..." 
+               class="flex-1 border border-gray-300 dark:border-gray-600 rounded px-3 py-2 bg-white dark:bg-gray-700 text-gray-800 dark:text-white">
+        <button id="refresh-nilai" class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded">
+          <i class="fas fa-sync"></i>
+        </button>
+      </div>
+      
+      <div id="nilai-list" class="space-y-3">
+        <!-- Data nilai akan dimuat di sini -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Rekap Nilai Tab -->
+  <div id="content-rekap" class="tab-content hidden space-y-4">
+    <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow">
+      <h3 class="text-lg font-semibold mb-4 text-gray-800 dark:text-white">Rekap Nilai Kelas</h3>
+      
+      <!-- Filter Kelas untuk Rekap -->
+      <div class="mb-6 p-4 bg-gray-50 dark:bg-gray-700 rounded-lg">
+        <h4 class="text-md font-semibold mb-3 text-gray-800 dark:text-white">Filter Kelas</h4>
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+          <div>
+            <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Jurusan</label>
+            <select id="rekap-jurusan" class="w-full border border-gray-300 dark:border-gray-600 rounded px-3 py-2 bg-white dark:bg-gray-700 text-gray-800 dark:text-white">
+              <option value="">Pilih Jurusan</option>
+            </select>
+          </div>
+          
+          <div>
+            <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Semester</label>
+            <select id="rekap-semester" class="w-full border border-gray-300 dark:border-gray-600 rounded px-3 py-2 bg-white dark:bg-gray-700 text-gray-800 dark:text-white">
+              <option value="">Pilih Semester</option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+              <option value="6">6</option>
+            </select>
+          </div>
+          
+          <div>
+            <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Mata Pelajaran</label>
+            <select id="rekap-mapel" class="w-full border border-gray-300 dark:border-gray-600 rounded px-3 py-2 bg-white dark:bg-gray-700 text-gray-800 dark:text-white">
+              <option value="">Pilih Mapel</option>
+            </select>
+          </div>
+          
+          <div class="flex items-end">
+            <button id="generate-rekap" class="w-full bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded">
+              Generate Rekap
+            </button>
+          </div>
+        </div>
+        <div class="mt-2">
+          <p id="rekap-info" class="text-sm text-gray-600 dark:text-gray-400"></p>
+        </div>
+      </div>
+      
+      <div id="rekap-container">
+        <!-- Rekap nilai akan ditampilkan di sini -->
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,75 @@
+<div class="p-4 space-y-4 text-gray-800 dark:text-gray-100">
+  <h1 class="text-xl font-bold mb-2">Laporan Dinamis</h1>
+
+  <form id="filterForm" class="bg-white dark:bg-gray-800 p-4 rounded shadow">
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+      <div>
+        <label class="block text-sm font-medium text-gray-700 dark:text-gray-300">Main Table</label>
+        <input type="text" id="Table" class="w-full border px-3 py-2 rounded bg-white dark:bg-gray-700 dark:border-gray-600" placeholder="kehadiran">
+      </div>
+      <div>
+        <label class="block text-sm font-medium text-gray-700 dark:text-gray-300">Kolom tbl 1(pisah koma)</label>
+        <input type="text" id="columns" class="w-full border px-3 py-2 rounded bg-white dark:bg-gray-700 dark:border-gray-600" placeholder="nama_siswa,tanggal,status">
+      </div>
+    </div>
+
+
+    <div id="joinContainer" class="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-4">
+    </div>
+    <div class="mt-2">
+      <button type="button" id="addJoinBtn" class="text-blue-600 hover:underline">+ Tambah Join</button>
+    </div>
+
+
+    <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+      <div>
+        <label class="block text-sm font-medium text-gray-700 dark:text-gray-300">Filter Kolom</label>
+        <input type="text" id="filterColumn" class="w-full border px-3 py-2 rounded bg-white dark:bg-gray-700 dark:border-gray-600" placeholder="kelas">
+      </div>
+      <div>
+        <label class="block text-sm font-medium text-gray-700 dark:text-gray-300">Nilai Filter</label>
+        <input type="text" id="filterValue" class="w-full border px-3 py-2 rounded bg-white dark:bg-gray-700 dark:border-gray-600" placeholder="X-TKJ-1">
+      </div>
+      <div>
+        <label class="block text-sm font-medium text-gray-700 dark:text-gray-300">Operator</label>
+        <select id="filterOperator" class="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100">
+          <option value="eq">=</option>
+          <option value="neq">!=</option>
+          <option value="lt">&lt;</option>
+          <option value="lte">&le;</option>
+          <option value="gt">&gt;</option>
+          <option value="gte">&ge;</option>
+          <option value="like">like</option>
+        </select>
+      </div>
+      <div>
+        <label class="block text-sm font-medium text-gray-700 dark:text-gray-300">Order By</label>
+        <input type="text" id="orderby" class="w-full border px-3 py-2 rounded bg-white dark:bg-gray-700 dark:border-gray-600" placeholder="kelas">
+      </div>
+      <div>
+        <label class="block text-sm font-medium text-gray-700 dark:text-gray-300">Ascending</label>
+        <select id="asc" class="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100" required>
+          <option value="true">Asc</option>
+          <option value="false">Dsc</option>
+        </select>    
+      </div>
+      
+      <div class="flex items-end">
+        <button type="submit" class="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 w-full">Tampilkan</button>
+      </div>
+    </div>
+  </form>
+  <div id="laporanContainer" class="mt-4"></div>
+</div>
+
+
+
+
+<div class="bg-yellow-50 dark:bg-yellow-950 text-yellow-700 dark:text-yellow-100 border-l-4 border-yellow-500 p-4 mt-6 rounded text-sm">
+  <h2 class="font-semibold text-base mb-2">🛠 List Pending Development</h2>
+  <ul class="list-disc list-inside space-y-1">
+    <li>Ubah flow insert pembayaran, insert master dan record, lalu di transaksi di update recordnya, cek juga di kelola dan dashboard</li>
+    <li>setelah pembayaran, buat flow gaji, user id di simpen di user id recordpembayaran</li>
+    <li>list laporan dan isinya berdasarkan yang login, jika admin full, selain itu berdasar role dan id </li>
+  </ul>
+</div>

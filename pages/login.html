@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="id" class="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Login - Sekolah Daringku</title>
+  <link rel="shortcut icon" href="../assets/img/favicon.ico" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+  <script src="../assets/js/supabase.js"></script>
+  <script src="https://unpkg.com/feather-icons"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            primary: {
+              50: '#f0f9ff',
+              100: '#e0f2fe',
+              200: '#bae6fd',
+              300: '#7dd3fc',
+              400: '#38bdf8',
+              500: '#0ea5e9',
+              600: '#0284c7',
+              700: '#0369a1',
+              800: '#075985',
+              900: '#0c4a6e'
+            }
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    @keyframes float {
+      0%, 100% { transform: translateY(0px) rotate(0deg); }
+      33% { transform: translateY(-20px) rotate(120deg); }
+      66% { transform: translateY(10px) rotate(240deg); }
+    }
+    @keyframes bookBounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-20px); }
+    }
+    .loader-book {
+      animation: bookBounce 0.8s ease-in-out infinite;
+      display: inline-block;
+      border-radius: 4px;
+    }
+    .loader-delay-0 { animation-delay: 0s; }
+    .loader-delay-1 { animation-delay: 0.2s; }
+    .loader-delay-2 { animation-delay: 0.4s; }
+    .floating { 
+      animation: float 8s ease-in-out infinite; 
+      opacity: 0.7;
+    }
+    .gradient-bg {
+      background: linear-gradient(135deg, #e0f2fe 0%, #bae6fd 25%, #7dd3fc 50%, #38bdf8 75%, #0ea5e9 100%);
+      background-size: 400% 400%;
+      animation: gradientShift 15s ease infinite;
+    }
+    @keyframes gradientShift {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+  </style>
+</head>
+<body class="min-h-screen gradient-bg transition-colors duration-300">
+  
+  <!-- Background Elements dengan bentuk geometris -->
+  <div class="fixed inset-0 overflow-hidden pointer-events-none">
+    <div class="absolute top-10 left-10 w-32 h-32 bg-primary-200/30 rounded-full floating" style="animation-delay: 0s;"></div>
+    <div class="absolute top-20 right-20 w-24 h-24 bg-primary-300/30 rounded-lg floating" style="animation-delay: 2s;"></div>
+    <div class="absolute bottom-20 left-20 w-28 h-28 bg-primary-200/40 rounded-full floating" style="animation-delay: 4s;"></div>
+    <div class="absolute bottom-10 right-10 w-20 h-20 bg-primary-300/40 rounded-lg floating" style="animation-delay: 6s;"></div>
+    <div class="absolute top-1/2 left-1/4 w-16 h-16 bg-primary-100/50 rounded-full floating" style="animation-delay: 1s;"></div>
+    <div class="absolute top-1/3 right-1/3 w-12 h-12 bg-primary-200/50 rounded-lg floating" style="animation-delay: 3s;"></div>
+  </div>
+
+  <div id="globalLoader" class="fixed inset-0 flex items-center justify-center bg-white/70 dark:bg-black/70 z-50 hidden">
+    <div class="flex items-end gap-2 h-20">
+      <div class="h-6 w-8 bg-primary-400 loader-book loader-delay-0"></div>
+      <div class="h-8 w-8 bg-primary-500 loader-book loader-delay-1"></div>
+      <div class="h-10 w-8 bg-primary-600 loader-book loader-delay-2"></div>
+    </div>
+  </div>
+
+  <div class="min-h-screen flex items-center justify-center px-4 relative z-10">
+    <div class="bg-white/95 dark:bg-gray-800/95 backdrop-blur-lg rounded-3xl shadow-2xl p-8 w-full max-w-md border border-white/30 dark:border-gray-600/30">
+      
+      <!-- Header dengan Logo -->
+      <div class="text-center mb-8">
+        <div class="flex justify-center mb-4">
+          <div class="relative">
+            <div class="w-20 h-20 bg-gradient-to-br from-primary-400 to-primary-600 rounded-2xl flex items-center justify-center shadow-lg">
+              <img src="../assets/img/logo.png" alt="Logo" class="h-12 w-12 filter brightness-0 invert">
+            </div>
+            <div class="absolute -bottom-2 -right-2 w-8 h-8 bg-primary-500 rounded-full border-4 border-white dark:border-gray-800 shadow-lg"></div>
+          </div>
+        </div>
+        <h1 class="text-3xl font-bold bg-gradient-to-r from-primary-600 to-primary-700 bg-clip-text text-transparent mb-2">
+          Sekolah Daringku
+        </h1>
+        <p class="text-gray-600 dark:text-gray-300 text-sm">Platform Pembelajaran Digital Modern</p>
+      </div>
+
+      <!-- Dark Mode Toggle -->
+      <div class="flex justify-center mb-6">
+        <button onclick="toggleDarkMode()" class="bg-primary-100 dark:bg-gray-700 rounded-full p-3 transition-all duration-300 hover:scale-110 hover:shadow-lg">
+          <span class="text-primary-600 dark:text-yellow-400 text-lg">🌙</span>
+        </button>
+      </div>
+
+      <!-- Login Form -->
+      <form id="loginForm" class="space-y-6">
+        <div class="space-y-4">
+          <div class="relative">
+            <i data-feather="school" class="absolute left-4 top-1/2 transform -translate-y-1/2 text-primary-500 w-5 h-5"></i>
+            <input type="text" id="kodesekolah" placeholder="Kode Sekolah" 
+                   class="w-full pl-12 pr-4 py-4 border-2 border-primary-100 dark:border-gray-600 rounded-xl bg-white/80 dark:bg-gray-700/80 focus:ring-2 focus:ring-primary-500 focus:border-primary-300 transition-all duration-300 placeholder-primary-300 dark:placeholder-gray-400 text-gray-900 dark:text-white">
+          </div>
+          
+          <div class="relative">
+            <i data-feather="user" class="absolute left-4 top-1/2 transform -translate-y-1/2 text-primary-500 w-5 h-5"></i>
+            <input type="text" id="user_no" placeholder="Nomor Pengguna" 
+                   class="w-full pl-12 pr-4 py-4 border-2 border-primary-100 dark:border-gray-600 rounded-xl bg-white/80 dark:bg-gray-700/80 focus:ring-2 focus:ring-primary-500 focus:border-primary-300 transition-all duration-300 placeholder-primary-300 dark:placeholder-gray-400 text-gray-900 dark:text-white">
+          </div>
+          
+          <div class="relative">
+            <i data-feather="lock" class="absolute left-4 top-1/2 transform -translate-y-1/2 text-primary-500 w-5 h-5"></i>
+            <input type="password" id="password" placeholder="Kata Sandi" 
+                   class="w-full pl-12 pr-4 py-4 border-2 border-primary-100 dark:border-gray-600 rounded-xl bg-white/80 dark:bg-gray-700/80 focus:ring-2 focus:ring-primary-500 focus:border-primary-300 transition-all duration-300 placeholder-primary-300 dark:placeholder-gray-400 text-gray-900 dark:text-white">
+          </div>
+        </div>
+
+        <button type="submit" 
+                class="w-full py-4 rounded-xl text-white font-bold bg-gradient-to-r from-primary-500 to-primary-600 hover:from-primary-600 hover:to-primary-700 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-[1.02] active:scale-95">
+          <i data-feather="log-in" class="w-5 h-5 inline mr-3"></i>
+          Masuk ke Sistem
+        </button>
+      </form>
+
+      <!-- Error Message -->
+      <div id="error" class="hidden mt-4 p-4 bg-red-100 dark:bg-red-900/40 border-2 border-red-200 dark:border-red-800 rounded-xl text-red-700 dark:text-red-300 text-center backdrop-blur-sm">
+        <i data-feather="alert-triangle" class="w-5 h-5 inline mr-2"></i>
+        Kode Sekolah, User No, atau Password salah
+      </div>
+
+      <!-- Help Link -->
+      <div class="text-center mt-6">
+        <a href="#" id="forgotPassword" class="text-primary-600 dark:text-primary-400 text-sm hover:underline hover:text-primary-700 dark:hover:text-primary-300 transition-colors">
+          <i data-feather="help-circle" class="w-4 h-4 inline mr-1"></i>
+          Butuh Bantuan?
+        </a>
+      </div>
+
+      <!-- Footer -->
+      <div class="text-center mt-8 pt-6 border-t border-primary-100 dark:border-gray-700">
+        <p class="text-primary-700/70 dark:text-primary-300/70 text-xs">
+          &copy; <span id="year"></span> Sekolah Daringku. All rights reserved.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <script src="../assets/js/auth.js"></script>
+  <script>
+    function toggleDarkMode() {
+      const html = document.documentElement;
+      html.classList.toggle('dark');
+      localStorage.setItem('darkMode', html.classList.contains('dark'));
+    }
+
+    // Set initial dark mode
+    if (localStorage.getItem('darkMode') === 'true') {
+      document.documentElement.classList.add('dark');
+    }
+
+    // Initialize feather icons
+    feather.replace();
+    const yearEl = document.getElementById('year');
+      if (yearEl) yearEl.textContent = new Date().getFullYear();
+
+      // Add help button functionality
+      document.getElementById('forgotPassword')?.addEventListener('click', function(e) {
+        e.preventDefault();
+        alert('Silakan hubungi administrator sekolah untuk mendapatkan bantuan login.');
+      });
+    // Add help button functionality
+    document.getElementById('forgotPassword')?.addEventListener('click', function(e) {
+      e.preventDefault();
+      alert('Silakan hubungi administrator sekolah untuk mendapatkan bantuan login.');
+    });
+  </script>
+</body>
+</html>

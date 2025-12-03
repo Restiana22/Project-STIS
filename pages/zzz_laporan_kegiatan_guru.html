@@ -1,0 +1,48 @@
+
+<div class="p-4 max-w-screen-xl mx-auto space-y-6">
+  <!-- Filter Section -->
+  <div class="grid grid-cols-1 md:grid-cols-5 gap-4 mb-6">
+    <input type="text" id="searchKegiatan" placeholder="Cari jenis/keterangan..." class="w-full border px-3 py-2 rounded dark:bg-gray-700 dark:border-gray-600 dark:text-white">
+    <select id="jenisFilter" class="w-full border px-3 py-2 rounded dark:bg-gray-700 dark:border-gray-600 dark:text-white">
+      <option value="">Semua Jenis</option>
+      <option value="Sholat Subuh">Sholat Subuh</option>
+      <option value="Sholat Dzuhur">Sholat Dzuhur</option>
+      <option value="Sholat Dhuha">Sholat Dhuha</option>
+      <option value="Lainnya">Lainnya</option>
+    </select>
+    <input type="date" id="dateFrom" class="w-full border px-3 py-2 rounded dark:bg-gray-700 dark:border-gray-600 dark:text-white">
+    <input type="date" id="dateTo" class="w-full border px-3 py-2 rounded dark:bg-gray-700 dark:border-gray-600 dark:text-white">
+    <select id="guruFilter" class="w-full border px-3 py-2 rounded dark:bg-gray-700 dark:border-gray-600 dark:text-white">
+      <option value="">Semua Guru</option>
+      <!-- Options akan diisi oleh JavaScript -->
+    </select>
+  </div>
+  
+  <div class="bg-white dark:bg-gray-800 rounded-lg shadow overflow-x-auto">
+    <table class="min-w-full">
+      <thead class="bg-gray-100 dark:bg-gray-700">
+        <tr>
+          <th class="py-3 px-4 text-left dark:text-gray-300">Guru</th>
+          <th class="py-3 px-4 text-left dark:text-gray-300">Jenis Kegiatan</th>
+          <th class="py-3 px-4 text-left dark:text-gray-300">Keterangan</th>
+          <th class="py-3 px-4 text-left dark:text-gray-300">Foto</th>
+          <th class="py-3 px-4 text-left dark:text-gray-300">Lokasi</th>
+          <th class="py-3 px-4 text-left dark:text-gray-300">Waktu</th>
+          <th class="py-3 px-4 text-left dark:text-gray-300">Aksi</th>
+        </tr>
+      </thead>
+      <tbody id="kegiatanGuruList" class="divide-y divide-gray-200 dark:divide-gray-700">
+        <!-- Data akan diisi oleh JavaScript -->
+      </tbody>
+    </table>
+  </div>
+  
+  <!-- Pagination -->
+  <div class="flex justify-between items-center mt-4">
+    <div id="paginationInfo" class="text-sm text-gray-600 dark:text-gray-300"></div>
+    <div class="flex space-x-2">
+      <button id="prevPage" class="px-3 py-1 bg-gray-200 rounded disabled:opacity-50 dark:bg-gray-700 dark:text-white">&lt;</button>
+      <button id="nextPage" class="px-3 py-1 bg-gray-200 rounded disabled:opacity-50 dark:bg-gray-700 dark:text-white">&gt;</button>
+    </div>
+  </div>
+</div>

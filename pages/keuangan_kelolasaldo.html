@@ -1,0 +1,53 @@
+<div class="p-4 max-w-screen-xl mx-auto text-gray-800 dark:text-gray-100">
+  <!-- Header -->
+  <div class="flex items-center mb-4">
+    <a href="#/keuangan_dashboard" class="text-blue-600 hover:text-blue-800 flex items-center dark:text-blue-400">
+      <i class="fas fa-arrow-left mr-2"></i> Kembali
+    </a>
+    <h1 class="text-2xl font-bold ml-4 dark:text-white">Kelola Saldo</h1>
+    <button id="tambahSaldoBtn" class="ml-auto bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded shadow dark:bg-blue-700 dark:hover:bg-blue-800">
+      <i class="fas fa-plus mr-2"></i> Tambah Saldo
+    </button>
+  </div>
+  
+  <!-- Filter -->
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+    <input type="text" id="searchInput" placeholder="🔍 Cari saldo..." class="w-full border px-3 py-2 rounded dark:bg-gray-700 dark:border-gray-600">
+    <select id="jenisFilter" class="w-full border px-3 py-2 rounded dark:bg-gray-700 dark:border-gray-600">
+      <option value="">Semua Jenis</option>
+      <option value="tabungan_siswa">Tabungan Siswa</option>
+      <option value="dana_bos">Dana BOS</option>
+      <option value="kas_sekolah">Kas Sekolah</option>
+      <option value="dana_darurat">Dana Darurat</option>
+      <option value="lainnya">Lainnya</option>
+    </select>
+    <select id="pemilikFilter" class="w-full border px-3 py-2 rounded dark:bg-gray-700 dark:border-gray-600">
+      <option value="">Semua Pemilik</option>
+      <option value="sekolah">Sekolah</option>
+      <option value="siswa">Siswa</option>
+    </select>
+  </div>
+  
+  <!-- Tabel Saldo -->
+  <div class="bg-white dark:bg-gray-800 rounded shadow overflow-x-auto">
+    <table class="min-w-full">
+      <thead class="bg-gray-100 dark:bg-gray-700">
+        <tr>
+          <th class="py-3 px-4 text-left dark:text-gray-300">Nama Saldo</th>
+          <th class="py-3 px-4 text-left dark:text-gray-300">Jenis</th>
+          <th class="py-3 px-4 text-left dark:text-gray-300">Pemilik</th>
+          <th class="py-3 px-4 text-left dark:text-gray-300">Saldo</th>
+          <th class="py-3 px-4 text-left dark:text-gray-300">Keterangan</th>
+          <th class="py-3 px-4 text-left dark:text-gray-300">Aksi</th>
+        </tr>
+      </thead>
+      <tbody id="saldoList" class="divide-y divide-gray-200 dark:divide-gray-700">
+        <tr>
+          <td colspan="6" class="py-4 px-4 text-center text-gray-500 dark:text-gray-400">
+            Memuat data saldo...
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

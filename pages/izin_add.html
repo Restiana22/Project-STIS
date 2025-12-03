@@ -1,0 +1,34 @@
+<div id="laman-izin" class="max-w-xl mx-auto mt-8 space-y-6">
+  <h2 class="text-xl font-bold text-blue-700 dark:text-blue-200">Form Pengajuan Izin</h2>
+
+  <!-- Tanggal Izin -->
+  <div>
+    <label class="block mb-1 font-medium text-gray-800 dark:text-gray-200">Tanggal Izin</label>
+    <input type="date" id="tanggal" class="w-full px-4 py-2 border rounded bg-[#f0fdfa] dark:bg-gray-700 dark:border-gray-600">
+  </div>
+
+  <!-- Jenis Izin -->
+  <div>
+    <label class="block mb-1 font-medium text-gray-800 dark:text-gray-200">Jenis Izin</label>
+    <select id="jenis_izin" class="w-full px-4 py-2 border rounded bg-[#f0fdfa] dark:bg-gray-700 dark:border-gray-600">
+      <option value="sakit">Sakit</option>
+      <option value="izin">Izin</option>
+      <option value="lainnya">Lainnya</option>
+    </select>
+  </div>
+
+  <!-- Alasan -->
+  <div>
+    <label class="block mb-1 font-medium text-gray-800 dark:text-gray-200">Alasan</label>
+    <textarea id="alasan" rows="3" class="w-full px-4 py-2 border rounded bg-[#f0fdfa] dark:bg-gray-700 dark:border-gray-600"></textarea>
+  </div>
+
+  <!-- Lampiran -->
+  <div>
+    <label class="block mb-1 font-medium text-gray-800 dark:text-gray-200">Lampiran (Surat Izin)</label>
+    <input type="file" id="lampiran" accept="image/*,.pdf,.doc,.docx" class="w-full px-4 py-2 border rounded bg-[#f0fdfa] dark:bg-gray-700 dark:border-gray-600">
+    <p class="text-sm text-gray-500 dark:text-gray-400">Format: gambar, PDF, atau dokumen (maks. 5MB)</p>
+  </div>
+
+  <button id="submitIzin" class="w-full bg-green-600 text-white py-2 rounded hover:bg-green-700">Ajukan Izin</button>
+</div>

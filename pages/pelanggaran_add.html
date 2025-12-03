@@ -1,0 +1,54 @@
+<div class="bg-white dark:bg-gray-800 rounded-xl shadow p-6">
+  <h2 class="text-xl font-bold mb-6" id="form-title">Tambah Jenis Pelanggaran Baru</h2>
+  
+  <div class="space-y-4">
+    <div class="mb-4">
+      <label class="block mb-2">Kelompok Pelanggaran</label>
+      <select id="kelompok" class="w-full p-2 border rounded bg-gray-50 dark:bg-gray-700">
+        <option value="">Pilih Kelompok</option>
+        <option value="KETERLAMBATAN">KETERLAMBATAN</option>
+        <option value="KEHADIRAN">KEHADIRAN</option>
+        <option value="PELANGGARAN ATRIBUT / PAKAIAN">PELANGGARAN ATRIBUT / PAKAIAN</option>
+        <option value="PELANGGARAN PENAMPILAN / KEPRIBADIAN">PELANGGARAN PENAMPILAN / KEPRIBADIAN</option>
+        <option value="PELANGGARAN KETERTIBAN DAN KEAMANAN">PELANGGARAN KETERTIBAN DAN KEAMANAN</option>
+        <option value="PELANGGARAN KETERTIBAN">PELANGGARAN KETERTIBAN</option>
+        <option value="MEROKOK">MEROKOK</option>
+        <option value="PORNOGRAFI">PORNOGRAFI</option>
+        <option value="SENJATA TAJAM">SENJATA TAJAM</option>
+        <option value="NAPZA DAN ATAU MINUMAN KERAS">NAPZA DAN ATAU MINUMAN KERAS</option>
+        <option value="PELANGGARAN KEKERASAN">PELANGGARAN KEKERASAN</option>
+        <option value="TINDAK PIDANA HUKUM">TINDAK PIDANA HUKUM</option>
+      </select>
+    </div>
+    
+    <div class="mb-4">
+      <label class="block mb-2">Nama Pelanggaran</label>
+      <input type="text" id="nama-pelanggaran" class="w-full p-2 border rounded bg-gray-50 dark:bg-gray-700">
+    </div>
+    
+    <div class="mb-4">
+      <label class="block mb-2">Tingkat (jika ada)</label>
+      <input type="text" id="tingkat" class="w-full p-2 border rounded bg-gray-50 dark:bg-gray-700" 
+             placeholder="Contoh: a, b, c atau 1, 2, 3">
+    </div>
+    
+    <div class="mb-4">
+      <label class="block mb-2">Bobot Poin</label>
+      <input type="number" id="bobot-poin" class="w-full p-2 border rounded bg-gray-50 dark:bg-gray-700" min="0">
+    </div>
+    
+    <div class="mb-4" id="urutan-container">
+      <label class="block mb-2">Urutan</label>
+      <input type="number" id="urutan" class="w-full p-2 border rounded bg-gray-50 dark:bg-gray-700" min="1" value="1">
+    </div>
+  </div>
+  
+  <div class="mt-6 flex space-x-3">
+    <button onclick="window.location.hash='#/pelanggaran_list'" class="flex-1 bg-gray-200 hover:bg-gray-300 text-gray-800 font-semibold py-2 px-4 rounded">
+      Batal
+    </button>
+    <button onclick="tambahPelanggaran()" class="flex-1 bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded">
+      Simpan
+    </button>
+  </div>
+</div>

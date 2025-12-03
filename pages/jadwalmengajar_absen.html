@@ -1,0 +1,72 @@
+<div class="w-full px-4 lg:px-8 mt-6">
+  <h2 class="text-xl font-bold text-blue-700 dark:text-blue-200 mb-4">Absen Mengajar</h2>
+  
+  <div class="bg-white dark:bg-gray-800 shadow rounded-xl p-6 mb-6">
+    <div id="jadwalInfo" class="mb-4 p-4 bg-blue-50 dark:bg-blue-900 rounded-lg">
+      <h3 class="text-lg font-semibold">Informasi Jadwal</h3>
+      <p id="mapelInfo" class="mt-2">Mata Pelajaran: <span class="font-semibold"></span></p>
+      <p id="jurusanInfo" class="mt-1">Jurusan: <span class="font-semibold"></span></p>
+      <p id="waktuInfo" class="mt-1">Waktu: <span class="font-semibold"></span></p>
+    </div>
+    
+    <div class="mb-6">
+      <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Keterangan</label>
+      <textarea id="keterangan" rows="3" class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:text-white" placeholder="Tambahkan keterangan mengajar..."></textarea>
+    </div>
+    
+    <div class="mb-6">
+      <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Lokasi</label>
+      <div id="locationPreview" class="p-3 bg-gray-100 dark:bg-gray-700 rounded-md text-sm mb-2">Mendeteksi lokasi...</div>
+      <button id="refreshLocationBtn" class="bg-blue-600 hover:bg-blue-700 text-white py-2 px-4 rounded text-sm">
+        <i class="fas fa-sync-alt mr-1"></i> Refresh Lokasi
+      </button>
+    </div>
+    
+    <div class="mb-6">
+      <div id="mapPreview" class="w-full h-64 bg-gray-200 dark:bg-gray-700 rounded-md"></div>
+    </div>
+    
+    <div class="mb-6">
+      <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Foto Bukti Mengajar</label>
+      <div class="flex items-center space-x-4">
+        <button id="openCameraBtn" class="bg-blue-600 hover:bg-blue-700 text-white py-2 px-4 rounded">
+          <i class="fas fa-camera mr-1"></i> Buka Kamera
+        </button>
+        <div id="captureNotice" class="text-sm text-gray-500 dark:text-gray-400">
+          Silakan ambil foto bukti mengajar
+        </div>
+      </div>
+      
+      <div class="mt-4 hidden" id="previewContainer">
+        <img id="previewImage" class="w-32 h-32 object-cover rounded border" />
+      </div>
+    </div>
+    
+    <div class="flex justify-end space-x-4">
+      <button id="cancelBtn" class="bg-gray-500 hover:bg-gray-600 text-white py-2 px-4 rounded">
+        Batal
+      </button>
+      <button id="submitAbsenMengajar" disabled class="bg-green-600 text-white py-2 px-4 rounded opacity-50 cursor-not-allowed">
+        <i class="fas fa-check-circle mr-1"></i> Simpan Absen
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- Modal Kamera -->
+<div id="cameraModal" class="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50 hidden">
+  <div class="bg-white dark:bg-gray-800 rounded-lg p-4 w-11/12 max-w-md">
+    <div class="relative">
+      <video id="video" autoplay playsinline class="w-full h-64 bg-black rounded"></video>
+      <canvas id="canvas" class="hidden"></canvas>
+    </div>
+    <div class="flex justify-center mt-4 space-x-4">
+      <button id="captureBtn" class="bg-blue-600 hover:bg-blue-700 text-white py-2 px-4 rounded">
+        <i class="fas fa-camera mr-1"></i> Ambil Foto
+      </button>
+      <button id="closeCameraBtn" class="bg-gray-500 hover:bg-gray-600 text-white py-2 px-4 rounded">
+        Tutup
+      </button>
+    </div>
+  </div>
+</div>

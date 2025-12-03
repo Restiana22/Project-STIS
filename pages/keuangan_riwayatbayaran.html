@@ -1,0 +1,27 @@
+<div class="p-4 max-w-screen-xl mx-auto text-gray-800 dark:text-gray-100">
+  <!-- Header -->
+
+
+  <!-- Filter -->
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+    <input type="text" id="searchInput" placeholder="🔍 Cari Pembayaran" class="w-full border px-3 py-2 rounded dark:bg-gray-700 dark:border-gray-600">
+    <select id="statusFilter" class="w-full border px-3 py-2 rounded dark:bg-gray-700 dark:border-gray-600">
+      <option value="">-- Semua Status --</option>
+      <option value="Sebagian">Sebagian</option>
+      <option value="Lunas">Lunas</option>
+    </select>
+  </div>
+  <div class="shadow py-2">
+    <h3 class="text-1xl font-bold">
+      RIWAYAT PEMBAYARAN TERBAYAR
+    </h3>
+  </div>
+  <!-- Tabel Tagihan -->
+  <div class="overflow-x-auto bg-white dark:bg-gray-800 rounded shadow">
+        <div class="w-full overflow-x-auto">
+          <div id="laporanContainer" class="min-w-max"></div>
+        </div>
+
+        <p id="jumlahData" class="text-sm text-gray-500 mt-2"></p>
+  </div>
+</div>

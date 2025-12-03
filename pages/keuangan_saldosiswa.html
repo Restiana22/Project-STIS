@@ -1,0 +1,59 @@
+<div class="p-4 max-w-screen-xl mx-auto text-gray-800 dark:text-gray-100">
+  <!-- Header -->
+  <div class="flex items-center mb-4">
+    <a href="#/keuangan_dashboard" class="text-blue-600 hover:text-blue-800 flex items-center dark:text-blue-400">
+      <i class="fas fa-arrow-left mr-2"></i> Kembali
+    </a>
+    <h1 class="text-2xl font-bold ml-4 dark:text-white">Saldo Siswa</h1>
+    <button id="tambahSaldoSiswaBtn" class="ml-auto bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded shadow dark:bg-blue-700 dark:hover:bg-blue-800">
+      <i class="fas fa-plus mr-2"></i> Tambah Saldo Siswa
+    </button>
+  </div>
+  
+  <!-- Filter -->
+  <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-6">
+    <input type="text" id="searchInput" placeholder="🔍 Cari nama/NIS siswa..." class="w-full border px-3 py-2 rounded dark:bg-gray-700 dark:border-gray-600">
+    <select id="jurusanFilter" class="w-full border px-3 py-2 rounded dark:bg-gray-700 dark:border-gray-600">
+      <option value="">Semua Jurusan</option>
+    </select>
+    <select id="semesterFilter" class="w-full border px-3 py-2 rounded dark:bg-gray-700 dark:border-gray-600">
+      <option value="">Semua Semester</option>
+      <option value="1">1</option>
+      <option value="2">2</option>
+      <option value="3">3</option>
+      <option value="4">4</option>
+      <option value="5">5</option>
+      <option value="6">6</option>
+    </select>
+    <select id="jenisSaldoFilter" class="w-full border px-3 py-2 rounded dark:bg-gray-700 dark:border-gray-600">
+      <option value="">Semua Jenis Saldo</option>
+      <option value="tabungan_siswa">Tabungan Siswa</option>
+      <option value="dana_beasiswa">Dana Beasiswa</option>
+      <option value="dana_lainnya">Dana Lainnya</option>
+    </select>
+  </div>
+  
+  <!-- Tabel Saldo Siswa -->
+  <div class="bg-white dark:bg-gray-800 rounded shadow overflow-x-auto">
+    <table class="min-w-full">
+      <thead class="bg-gray-100 dark:bg-gray-700">
+        <tr>
+          <th class="py-3 px-4 text-left dark:text-gray-300">Siswa</th>
+          <th class="py-3 px-4 text-left dark:text-gray-300">Jurusan</th>
+          <th class="py-3 px-4 text-left dark:text-gray-300">Semester</th>
+          <th class="py-3 px-4 text-left dark:text-gray-300">Jenis Saldo</th>
+          <th class="py-3 px-4 text-left dark:text-gray-300">Saldo</th>
+          <th class="py-3 px-4 text-left dark:text-gray-300">Keterangan</th>
+          <th class="py-3 px-4 text-left dark:text-gray-300">Aksi</th>
+        </tr>
+      </thead>
+      <tbody id="saldoSiswaList" class="divide-y divide-gray-200 dark:divide-gray-700">
+        <tr>
+          <td colspan="7" class="py-4 px-4 text-center text-gray-500 dark:text-gray-400">
+            Memuat data saldo siswa...
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

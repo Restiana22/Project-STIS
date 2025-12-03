@@ -1,0 +1,28 @@
+<div class="w-full px-4 lg:px-8 mb-6">
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+    <!-- Tombol Tambah Materi -->
+    <div class="list-none">
+      <a href="#/materi_add">
+        <button class="w-full bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white font-semibold py-3 px-6 rounded-xl shadow-lg transition-all duration-300 transform hover:scale-105 flex items-center justify-center space-x-2">
+          <i data-feather="plus" class="w-5 h-5"></i>
+          <span>Tambah Materi</span>
+        </button>
+      </a>
+    </div>
+    
+    <!-- Tombol Upload Banyak Materi -->
+    <div class="list-none">
+      <a href="#/materi_upload">
+        <button class="w-full bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white font-semibold py-3 px-6 rounded-xl shadow-lg transition-all duration-300 transform hover:scale-105 flex items-center justify-center space-x-2">
+          <i data-feather="upload" class="w-5 h-5"></i>
+          <span>Upload Banyak Materi</span>
+        </button>
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- Container untuk ReusableTable -->
+<div id="materi-list" class="materi-list-container">
+  <!-- Table akan di-render oleh JavaScript -->
+</div>

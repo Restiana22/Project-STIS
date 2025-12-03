@@ -1,0 +1,95 @@
+<div class="p-6 max-w-screen-lg mx-auto space-y-6">
+  <div class="flex items-center mb-4">
+    <a href="#/dashboard" class="text-blue-600 hover:text-blue-800 flex items-center dark:text-blue-400">
+      <i class="fas fa-arrow-left mr-2"></i> Kembali
+    </a>
+    <h1 class="text-2xl font-bold ml-4 dark:text-white">Dashboard Keuangan</h1>
+  </div>
+  
+  <!-- Stat Cards - TAMBAH SALDO -->
+  <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+    <div class="bg-blue-100 dark:bg-blue-900 p-4 rounded-lg">
+      <div class="text-blue-800 dark:text-blue-200">Total Tagihan Aktif</div>
+      <div id="totalTagihan" class="text-2xl font-bold dark:text-white">0</div>
+    </div>
+    
+    <div class="bg-green-100 dark:bg-green-900 p-4 rounded-lg">
+      <div class="text-green-800 dark:text-green-200">Pembayaran Bulan Ini</div>
+      <div id="pembayaranBulanIni" class="text-2xl font-bold dark:text-white">Rp 0</div>
+    </div>
+    
+    <div class="bg-yellow-100 dark:bg-yellow-900 p-4 rounded-lg">
+      <div class="text-yellow-800 dark:text-yellow-200">Tagihan Belum Lunas</div>
+      <div id="tagihanBelumLunas" class="text-2xl font-bold dark:text-white">0</div>
+    </div>
+    
+    <div class="bg-purple-100 dark:bg-purple-900 p-4 rounded-lg">
+      <div class="text-purple-800 dark:text-purple-200">Saldo Sekolah</div>
+      <div id="saldoSekolah" class="text-2xl font-bold dark:text-white">Rp 0</div>
+    </div>
+  </div>
+
+  <!-- Quick Actions - TAMBAH TOMBOL SALDO -->
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-6">
+    <a href="#/keuangan_mastertagihan" class="p-6 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-700 rounded-lg shadow-md flex flex-col items-center justify-center hover:shadow-lg transition">
+      <div class="text-emerald-600 dark:text-emerald-400 text-4xl mb-3">
+        <i class="fas fa-plus-circle"></i>
+      </div>
+      <h3 class="text-lg font-semibold dark:text-white">Buat Tagihan Baru</h3>
+      <p class="text-gray-500 text-sm mt-1 dark:text-gray-400">Untuk kelas atau individu</p>
+    </a>
+    
+    <a href="#/keuangan_masterpembayaran" class="p-6 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-700 rounded-lg shadow-md flex flex-col items-center justify-center hover:shadow-lg transition">
+      <div class="text-red-600 dark:text-red-400 text-4xl mb-3">
+        <i class="fas fa-money-bill-wave"></i>
+      </div>
+      <h3 class="text-lg font-semibold dark:text-white">Buat Pembayaran Baru</h3>
+      <p class="text-gray-500 text-sm mt-1 dark:text-gray-400">Gaji, bonus, dll</p>
+    </a>
+    
+    <!-- TOMBOL BARU: KELOLA SALDO -->
+    <a href="#/keuangan_kelolasaldo" class="p-6 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-700 rounded-lg shadow-md flex flex-col items-center justify-center hover:shadow-lg transition">
+      <div class="text-yellow-600 dark:text-yellow-400 text-4xl mb-3">
+        <i class="fas fa-wallet"></i>
+      </div>
+      <h3 class="text-lg font-semibold dark:text-white">Saldo Sekolah</h3>
+      <p class="text-gray-500 text-sm mt-1 dark:text-gray-400">Tabungan, Dana BOS, dll</p>
+    </a>
+    
+    
+    <a href="#/keuangan_kelolatagihan" class="p-6 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-700 rounded-lg shadow-md flex flex-col items-center justify-center hover:shadow-lg transition">
+      <div class="text-emerald-600 dark:text-emerald-400 text-4xl mb-3">
+        <i class="fas fa-tasks"></i>
+      </div>
+      <h3 class="text-lg font-semibold dark:text-white">Kelola Tagihan</h3>
+      <p class="text-gray-500 text-sm mt-1 dark:text-gray-400">Lihat dan kelola semua tagihan</p>
+    </a>
+    
+    <a href="#/keuangan_kelolapembayaran" class="p-6 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-700 rounded-lg shadow-md flex flex-col items-center justify-center hover:shadow-lg transition">
+      <div class="text-red-600 dark:text-red-400 text-4xl mb-3">
+        <i class="fas fa-credit-card"></i>
+      </div>
+      <h3 class="text-lg font-semibold dark:text-white">Kelola Pembayaran</h3>
+      <p class="text-gray-500 text-sm mt-1 dark:text-gray-400">Lihat dan kelola semua pembayaran</p>
+    </a>
+    
+    <!-- TOMBOL BARU: SALDO SISWA -->
+    <a href="#/keuangan_saldosiswa" class="p-6 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-700 rounded-lg shadow-md flex flex-col items-center justify-center hover:shadow-lg transition">
+      <div class="text-purple-600 dark:text-purple-400 text-4xl mb-3">
+        <i class="fas fa-user-graduate"></i>
+      </div>
+      <h3 class="text-lg font-semibold dark:text-white">Saldo Siswa</h3>
+      <p class="text-gray-500 text-sm mt-1 dark:text-gray-400">Kelola tabungan siswa</p>
+    </a>
+  </div>
+  
+  <!-- Recent Activity -->
+  <div class="mt-8 bg-white dark:bg-gray-800 rounded-lg shadow-md p-6">
+    <h2 class="text-xl font-semibold mb-4 dark:text-white">Aktivitas Terbaru</h2>
+    <div id="recentActivity" class="space-y-4">
+      <div class="flex items-center justify-center py-8 text-gray-500 dark:text-gray-400">
+        <i class="fas fa-spinner fa-spin mr-2"></i> Memuat data...
+      </div>
+    </div>
+  </div>
+</div>

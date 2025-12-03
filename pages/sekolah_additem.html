@@ -1,0 +1,153 @@
+<div class="max-w-2xl mx-auto mt-8 p-4">
+  <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-6">
+    <h2 class="text-2xl font-bold mb-6 text-center text-blue-600 dark:text-blue-400">Tambah Item Sekolah Baru</h2>
+    
+    <form id="addSekolahForm" class="space-y-6">
+      <!-- Item Selection -->
+      <div class="form-group">
+        <label class="block mb-2 font-medium text-gray-800 dark:text-gray-200">Jenis Item</label>
+        <div class="relative">
+          <select id="item" class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-xl bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 focus:ring-2 focus:ring-blue-500 focus:border-transparent transition">
+            <option value="" disabled selected>Pilih jenis item</option>
+            <option value="jurusan">Jurusan</option>
+            <option value="mapel">Mata Pelajaran</option>
+            <option value="inventaris">Inventaris</option>
+            <option value="lainnya">Lainnya</option>
+          </select>
+          <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700 dark:text-gray-300">
+            <i class="fas fa-chevron-down"></i>
+          </div>
+        </div>
+        <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">Pilih jenis item yang ingin ditambahkan</p>
+      </div>
+
+      <!-- Jurusan Fields -->
+      <div id="jurusanFields" class="hidden space-y-4 p-4 bg-blue-50 dark:bg-gray-700 rounded-xl">
+        <h3 class="text-lg font-semibold text-blue-700 dark:text-blue-300 mb-3">Data Jurusan</h3>
+        
+        <div class="form-group">
+          <label class="block mb-2 font-medium text-gray-800 dark:text-gray-200">Kode Jurusan</label>
+          <input type="text" id="kode_jurusan" class="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 focus:ring-2 focus:ring-blue-500 focus:border-transparent transition" placeholder="JRS001" data-require>
+          <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">Contoh: JRS001</p>
+        </div>
+        
+        <div class="form-group">
+          <label class="block mb-2 font-medium text-gray-800 dark:text-gray-200">Nama Jurusan</label>
+          <input type="text" id="nama_jurusan" class="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 focus:ring-2 focus:ring-blue-500 focus:border-transparent transition" placeholder="Teknik Informatika" data-require>
+        </div>
+      </div>
+      
+      <!-- Mapel Fields -->
+      <div id="mapelFields" class="hidden space-y-4 p-4 bg-blue-50 dark:bg-gray-700 rounded-xl">
+        <h3 class="text-lg font-semibold text-blue-700 dark:text-blue-300 mb-3">Data Mata Pelajaran</h3>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div class="form-group">
+            <label class="block mb-2 font-medium text-gray-800 dark:text-gray-200">Kode Mata Pelajaran</label>
+            <input type="text" id="kode_mapel" class="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 focus:ring-2 focus:ring-blue-500 focus:border-transparent transition" placeholder="MP001" data-require>
+          </div>
+          
+          <div class="form-group">
+            <label class="block mb-2 font-medium text-gray-800 dark:text-gray-200">Nama Mata Pelajaran</label>
+            <input type="text" id="nama_mapel" class="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 focus:ring-2 focus:ring-blue-500 focus:border-transparent transition" placeholder="Matematika" data-require>
+          </div>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div class="form-group">
+            <label class="block mb-2 font-medium text-gray-800 dark:text-gray-200">Semester</label>
+            <input type="number" id="semester" min="1" max="12" class="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 focus:ring-2 focus:ring-blue-500 focus:border-transparent transition" placeholder="1" data-require>
+          </div>
+          
+          <div class="form-group">
+            <label class="block mb-2 font-medium text-gray-800 dark:text-gray-200">Jurusan</label>
+            <div class="relative">
+              <select id="jurusan" class="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 focus:ring-2 focus:ring-blue-500 focus:border-transparent transition" data-require>
+                <option value="">Pilih jurusan</option>
+              </select>
+              <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700 dark:text-gray-300">
+                <i class="fas fa-chevron-down"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Inventaris Fields -->
+      <div id="inventarisFields" class="hidden space-y-4 p-4 bg-blue-50 dark:bg-gray-700 rounded-xl">
+        <h3 class="text-lg font-semibold text-blue-700 dark:text-blue-300 mb-3">Data Inventaris</h3>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div class="form-group">
+            <label class="block mb-2 font-medium text-gray-800 dark:text-gray-200">Kode Inventaris</label>
+            <input type="text" id="kode_inventaris" class="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 focus:ring-2 focus:ring-blue-500 focus:border-transparent transition" placeholder="INV001" data-require>
+          </div>
+          
+          <div class="form-group">
+            <label class="block mb-2 font-medium text-gray-800 dark:text-gray-200">Nama Inventaris</label>
+            <input type="text" id="nama_inventaris" class="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 focus:ring-2 focus:ring-blue-500 focus:border-transparent transition" placeholder="Proyektor" data-require>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Lainnya Fields -->
+      <div id="lainnyaFields" class="hidden space-y-4 p-4 bg-blue-50 dark:bg-gray-700 rounded-xl">
+        <h3 class="text-lg font-semibold text-blue-700 dark:text-blue-300 mb-3">Data Lainnya</h3>
+        
+        <div class="form-group">
+          <label class="block mb-2 font-medium text-gray-800 dark:text-gray-200">Group Item (Tipe)</label>
+          <input type="text" id="group_item" class="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 focus:ring-2 focus:ring-blue-500 focus:border-transparent transition" placeholder="Contoh: Ruangan, Peralatan" data-require>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div class="form-group">
+            <label class="block mb-2 font-medium text-gray-800 dark:text-gray-200">Kode Item</label>
+            <input type="text" id="kode_item" class="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 focus:ring-2 focus:ring-blue-500 focus:border-transparent transition" placeholder="Kode unik item" data-require>
+          </div>
+          
+          <div class="form-group">
+            <label class="block mb-2 font-medium text-gray-800 dark:text-gray-200">Nama Item</label>
+            <input type="text" id="nama_item" class="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 focus:ring-2 focus:ring-blue-500 focus:border-transparent transition" placeholder="Nama lengkap item" data-require>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Submit Button -->
+      <div class="pt-4">
+        <button type="submit" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-4 rounded-xl shadow-lg hover:shadow-xl transition transform hover:-translate-y-0.5">
+          <i class="fas fa-plus-circle mr-2"></i>Tambah Item
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<style>
+  .form-group {
+    margin-bottom: 1.25rem;
+  }
+  
+  input, select {
+    transition: all 0.3s ease;
+  }
+  
+  input:focus, select:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.3);
+  }
+  
+  .dark input:focus, .dark select:focus {
+    box-shadow: 0 0 0 3px rgba(96, 165, 250, 0.3);
+  }
+  
+  .error {
+    border-color: #ef4444 !important;
+  }
+  
+  .error-message {
+    color: #ef4444;
+    font-size: 0.875rem;
+    margin-top: 0.25rem;
+    display: none;
+  }
+</style>

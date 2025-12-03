@@ -1,0 +1,119 @@
+<div class="max-w-4xl mx-auto">
+    <div class="flex justify-between items-center mb-8">
+      <h1 class="text-2xl font-bold text-blue-600 dark:text-blue-400">Upload Massal User</h1>
+      <a href="#/users_list" class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-md transition">
+        <i class="fas fa-arrow-left mr-2"></i>Kembali
+      </a>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
+      <!-- Template Download Section -->
+      <div class="bg-white dark:bg-gray-800 rounded-xl shadow-md p-6">
+        <h2 class="text-xl font-bold mb-4 text-blue-600 dark:text-blue-400">
+          <i class="fas fa-file-excel mr-2"></i>Template Excel
+        </h2>
+        <p class="mb-4">Download template Excel untuk memudahkan pengisian data user:</p>
+        <div class="flex items-center">
+          <button id="btnDownloadTemplate" class="bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded-md flex items-center">
+            <i class="fas fa-download mr-2"></i>Download Template
+          </button>
+          <div class="ml-4 text-sm">
+            <span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded dark:bg-blue-900 dark:text-blue-200">Format .xlsx</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Instructions Section -->
+      <div class="bg-white dark:bg-gray-800 rounded-xl shadow-md p-6">
+        <h2 class="text-xl font-bold mb-4 text-blue-600 dark:text-blue-400">
+          <i class="fas fa-info-circle mr-2"></i>Petunjuk Pengisian
+        </h2>
+        <ul class="list-disc pl-5 space-y-2 text-sm">
+          <li>Gunakan template yang telah disediakan</li>
+          <li>Kolom <span class="font-mono bg-yellow-100 dark:bg-yellow-900 px-1 rounded">user_no</span>, <span class="font-mono bg-yellow-100 dark:bg-yellow-900 px-1 rounded">name</span>, <span class="font-mono bg-yellow-100 dark:bg-yellow-900 px-1 rounded">password</span>, dan <span class="font-mono bg-yellow-100 dark:bg-yellow-900 px-1 rounded">role</span> wajib diisi</li>
+          <li>Kolom <span class="font-mono bg-yellow-100 dark:bg-yellow-900 px-1 rounded">jurusan</span> dan <span class="font-mono bg-yellow-100 dark:bg-yellow-900 px-1 rounded">semester</span> diperlukan untuk role siswa</li>
+          <li>Kolom <span class="font-mono bg-yellow-100 dark:bg-yellow-900 px-1 rounded">guru_mapel</span> diperlukan untuk role guru (pisahkan dengan koma jika multiple)</li>
+          <li>Kolom <span class="font-mono bg-yellow-100 dark:bg-yellow-900 px-1 rounded">siswa_no</span> diperlukan untuk role wali</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Excel Upload Section -->
+    <div class="bg-white dark:bg-gray-800 rounded-xl shadow-md p-6 mb-6">
+      <h2 class="text-xl font-bold mb-4 text-blue-600 dark:text-blue-400">
+        <i class="fas fa-file-upload mr-2"></i>Upload Data Excel
+      </h2>
+      
+      <div class="file-upload-box mb-4" id="excelDropZone">
+        <i class="fas fa-file-excel text-green-500 text-4xl mb-3"></i>
+        <p class="font-medium mb-1">Klik atau seret file Excel ke sini</p>
+        <p class="text-sm text-gray-500 dark:text-gray-400 mb-3">Format yang didukung: .xlsx, .xls</p>
+        <input type="file" id="excelFile" accept=".xlsx, .xls" class="hidden">
+        <button id="btnSelectExcel" class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-md">
+          Pilih File Excel
+        </button>
+      </div>
+      
+      <div class="flex justify-between">
+        <div id="excelFileName" class="text-sm text-gray-500 dark:text-gray-400 italic">
+          Belum ada file dipilih
+        </div>
+        <button id="btnPreview" class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-md hidden">
+          <i class="fas fa-eye mr-2"></i>Preview Data
+        </button>
+      </div>
+    </div>
+
+    <!-- Preview Section (Hidden by default) -->
+    <div id="previewContainer" class="hidden bg-white dark:bg-gray-800 rounded-xl shadow-md p-6 mb-6">
+      <h2 class="text-xl font-bold mb-4 text-blue-600 dark:text-blue-400">
+        <i class="fas fa-table mr-2"></i>Preview Data
+      </h2>
+      
+      <div class="overflow-x-auto mb-4">
+        <table id="previewTable" class="min-w-full border-collapse">
+          <thead>
+            <tr class="bg-gray-100 dark:bg-gray-700">
+              <th class="p-3 border text-left">User No</th>
+              <th class="p-3 border text-left">Nama</th>
+              <th class="p-3 border text-left">Role</th>
+              <th class="p-3 border text-left">Alamat</th>
+              <th class="p-3 border text-left">Detail</th>
+            </tr>
+          </thead>
+          <tbody id="previewBody"></tbody>
+        </table>
+      </div>
+      
+      <div class="text-center text-sm text-gray-500 dark:text-gray-400">
+        Menampilkan <span id="rowCount">0</span> baris data
+      </div>
+      
+      <div class="flex justify-end mt-4">
+        <button id="btnSubmit" class="bg-green-500 hover:bg-green-600 text-white px-6 py-3 rounded-md font-medium">
+          <i class="fas fa-cloud-upload-alt mr-2"></i>Proses Upload
+        </button>
+      </div>
+    </div>
+
+    <!-- Progress Bar (Hidden by default) -->
+    <div id="progressContainer" class="hidden bg-white dark:bg-gray-800 rounded-xl shadow-md p-6 mb-6">
+      <h2 class="text-xl font-bold mb-4 text-blue-600 dark:text-blue-400">
+        <i class="fas fa-sync-alt mr-2 animate-spin"></i>Sedang Memproses
+      </h2>
+      
+      <div class="mb-4">
+        <div class="flex justify-between mb-1">
+          <span class="text-sm font-medium">Proses Upload</span>
+          <span id="progressPercentage" class="text-sm font-medium">0%</span>
+        </div>
+        <div class="w-full bg-gray-200 rounded-full h-2.5 dark:bg-gray-700">
+          <div id="progressBar" class="bg-blue-600 h-2.5 rounded-full" style="width: 0%"></div>
+        </div>
+      </div>
+      
+      <div id="progressDetails" class="text-sm text-gray-500 dark:text-gray-400">
+        <p>Memproses data user...</p>
+      </div>
+    </div>
+  </div>

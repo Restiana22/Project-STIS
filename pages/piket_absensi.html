@@ -1,0 +1,62 @@
+<div class="max-w-6xl mx-auto mt-8 space-y-6">
+  <h2 class="text-2xl font-bold text-blue-700 dark:text-blue-200">Absensi Siswa oleh Guru Piket</h2>
+
+  <!-- Filter -->
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-4 p-4 bg-white dark:bg-gray-800 rounded-lg shadow">
+    <div>
+      <label class="block mb-2 font-medium text-gray-800 dark:text-gray-200">Kelas/Jurusan</label>
+      <select id="filterJurusan" class="w-full px-4 py-2 border rounded-lg dark:bg-gray-700 dark:text-gray-100">
+        <option value="">Pilih Jurusan</option>
+      </select>
+    </div>
+    <div>
+      <label class="block mb-2 font-medium text-gray-800 dark:text-gray-200">Semester</label>
+      <select id="filterSemester" class="w-full px-4 py-2 border rounded-lg dark:bg-gray-700 dark:text-gray-100">
+        <option value="">Pilih Semester</option>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+        <option value="6">6</option>
+      </select>
+    </div>
+    <div class="flex items-end">
+      <button id="btnFilter" class="w-full bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg">
+        Filter Siswa
+      </button>
+    </div>
+  </div>
+
+  <!-- Daftar Siswa -->
+  <div id="siswaContainer" class="hidden">
+    <div class="bg-white dark:bg-gray-800 rounded-lg shadow overflow-hidden">
+      <div class="p-4 border-b dark:border-gray-700">
+        <h3 class="text-lg font-semibold text-gray-800 dark:text-gray-200">Daftar Siswa</h3>
+      </div>
+      <table class="w-full">
+        <thead>
+          <tr class="bg-gray-50 dark:bg-gray-700">
+            <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase">[NIS] Nama</th>
+            <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase">Status</th>
+            <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase">Aksi</th>
+          </tr>
+        </thead>
+        <tbody id="siswaList" class="divide-y divide-gray-200 dark:divide-gray-700">
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- Modal Konfirmasi Absensi -->
+<div id="confirmModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center hidden z-50">
+  <div class="bg-white dark:bg-gray-800 rounded-lg p-6 w-full max-w-md">
+    <h3 class="text-lg font-semibold mb-4">Konfirmasi Absensi</h3>
+    <p id="confirmText" class="mb-4">Apakah Anda yakin ingin menandai siswa ini sebagai hadir?</p>
+    <div class="flex justify-end space-x-3">
+      <button id="cancelConfirm" class="px-4 py-2 border border-gray-300 rounded-lg">Batal</button>
+      <button id="submitConfirm" class="px-4 py-2 bg-blue-600 text-white rounded-lg">Konfirmasi</button>
+    </div>
+  </div>
+</div>

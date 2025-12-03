@@ -1,0 +1,58 @@
+<div class="p-4 max-w-screen-xl mx-auto space-y-6">
+  <div class="flex items-center mb-4">
+    <a href="#/keuangan_dashboard" class="text-blue-600 hover:text-blue-800 flex items-center dark:text-blue-400">
+      <i class="fas fa-arrow-left mr-2"></i> Kembali
+    </a>
+    <h1 class="text-2xl font-bold ml-4 dark:text-white">Riwayat Pembayaran Tagihan</h1>
+  </div>
+  
+  <div class="grid grid-cols-1 md:grid-cols-5 gap-4 mb-6">
+    <input type="text" id="searchInput" placeholder="Cari nama/NIS..." class="w-full border px-3 py-2 rounded dark:bg-gray-700 dark:border-gray-600 dark:text-white">
+    <select id="jurusanFilter" class="w-full border px-3 py-2 rounded dark:bg-gray-700 dark:border-gray-600 dark:text-white">
+      <option value="">Semua Jurusan</option>
+      <!-- Diisi JS -->
+    </select>
+    <select id="semesterFilter" class="w-full border px-3 py-2 rounded dark:bg-gray-700 dark:border-gray-600 dark:text-white">
+      <option value="">Semua Semester</option>
+      <option value="1">1</option>
+      <option value="2">2</option>
+      <option value="3">3</option>
+      <option value="4">4</option>
+      <option value="5">5</option>
+      <option value="6">6</option>
+    </select>
+    <select id="jenisFilter" class="w-full border px-3 py-2 rounded dark:bg-gray-700 dark:border-gray-600 dark:text-white">
+      <option value="">Semua Jenis</option>
+      <!-- Diisi JS -->
+    </select>
+    <input type="month" id="periodeFilter" class="w-full border px-3 py-2 rounded dark:bg-gray-700 dark:border-gray-600 dark:text-white">
+  </div>
+  
+  <div class="bg-white dark:bg-gray-800 rounded-lg shadow overflow-x-auto">
+    <table class="min-w-full">
+      <thead class="bg-gray-100 dark:bg-gray-700">
+        <tr>
+          <th class="py-3 px-4 text-left dark:text-gray-300">Tanggal</th>
+          <th class="py-3 px-4 text-left dark:text-gray-300">Siswa</th>
+          <th class="py-3 px-4 text-left dark:text-gray-300">Jenis Tagihan</th>
+          <th class="py-3 px-4 text-left dark:text-gray-300">Periode</th>
+          <th class="py-3 px-4 text-left dark:text-gray-300">Nominal</th>
+          <th class="py-3 px-4 text-left dark:text-gray-300">Metode</th>
+          <th class="py-3 px-4 text-left dark:text-gray-300">Catatan</th>
+        </tr>
+      </thead>
+      <tbody id="riwayatList" class="divide-y divide-gray-200 dark:divide-gray-700">
+        <!-- Diisi JS -->
+      </tbody>
+    </table>
+  </div>
+  
+  <!-- Pagination -->
+  <div class="flex justify-between items-center mt-4">
+    <div id="paginationInfo" class="text-sm text-gray-600 dark:text-gray-300"></div>
+    <div class="flex space-x-2">
+      <button id="prevPage" class="px-3 py-1 bg-gray-200 rounded disabled:opacity-50 dark:bg-gray-700 dark:text-white">&lt;</button>
+      <button id="nextPage" class="px-3 py-1 bg-gray-200 rounded disabled:opacity-50 dark:bg-gray-700 dark:text-white">&gt;</button>
+    </div>
+  </div>
+</div>

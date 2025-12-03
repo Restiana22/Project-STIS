@@ -1,0 +1,85 @@
+<div class="bg-white dark:bg-gray-800 rounded-lg shadow p-6">
+  <h2 class="text-xl font-bold mb-6 text-gray-800 dark:text-gray-200">Buat Tagihan Baru</h2>
+  <form id="formMasterTagihan" class="space-y-6">
+    <div>
+      <label class="block text-sm font-medium mb-2 dark:text-gray-300">Nama Tagihan</label>
+      <input type="text" id="namaTagihan" required 
+             class="w-full border rounded px-3 py-2 dark:bg-gray-700 dark:text-gray-300">
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      
+      <div>
+        <label class="block text-sm font-medium mb-2 dark:text-gray-300">Nominal</label>
+        <input type="number" id="nominalTagihan" required min="0"
+               class="w-full border rounded px-3 py-2 dark:bg-gray-700 dark:text-gray-300">
+      </div>
+      
+      <div>
+        <label class="block text-sm font-medium mb-2 dark:text-gray-300">Tipe</label>
+        <select id="tipeTagihan" required
+                class="w-full border rounded px-3 py-2 dark:bg-gray-700 dark:text-gray-300">
+          <option value="sekali">Sekali Bayar</option>
+          <option value="bulanan">Bulanan</option>
+        </select>
+      </div>
+      
+      <div>
+        <label class="block text-sm font-medium mb-2 dark:text-gray-300">Tanggal Mulai</label>
+        <input type="date" id="tanggalMulai" required
+               class="w-full border rounded px-3 py-2 dark:bg-gray-700 dark:text-gray-300">
+      </div>
+      <div>
+        <label class="block text-sm font-medium mb-2 dark:text-gray-300">Tanggal Berakhir (Opsional)</label>
+        <input type="date" id="tanggalBerakhir"
+              class="w-full border rounded px-3 py-2 dark:bg-gray-700 dark:text-gray-300">
+        <p class="text-xs text-gray-500 mt-1">Kosongkan jika tagihan berlaku tanpa batas waktu</p>
+      </div>
+    </div>
+    
+    <div>
+      <label class="block text-sm font-medium mb-2 dark:text-gray-300">Keterangan</label>
+      <textarea id="keteranganTagihan" 
+                class="w-full border rounded px-3 py-2 dark:bg-gray-700 dark:text-gray-300"></textarea>
+    </div>
+    
+    <div class="border-t pt-4">
+      <h3 class="text-lg font-medium mb-4 dark:text-gray-300">Penerima Tagihan</h3>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+        <div>
+          <label class="block text-sm font-medium mb-2 dark:text-gray-300">Jurusan</label>
+          <select id="jurusanFilter" class="w-full border rounded px-3 py-2 dark:bg-gray-700 dark:text-gray-300">
+            <option value="">Pilih Jurusan</option>
+          </select>
+        </div>
+        
+        <div>
+          <label class="block text-sm font-medium mb-2 dark:text-gray-300">Semester</label>
+          <select id="semesterFilter" class="w-full border rounded px-3 py-2 dark:bg-gray-700 dark:text-gray-300">
+            <option value="">Pilih Semester</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+          </select>
+        </div>
+      </div>
+      
+      <button type="button" id="previewUserBtn" 
+              class="bg-blue-600 text-white px-4 py-2 rounded mb-4">
+        Preview User
+      </button>
+      
+      <div id="userList" class="border rounded p-4 max-h-60 overflow-y-auto dark:bg-gray-700">
+        <div class="text-center text-gray-500 py-4">Lakukan preview untuk melihat user</div>
+      </div>
+    </div>
+    
+    <div class="flex justify-end gap-4 pt-4">
+      <a href="#/keuangan_kelolatagihan" class="bg-gray-300 text-gray-800 px-4 py-2 rounded">Batal</a>
+      <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded">Simpan Tagihan</button>
+    </div>
+  </form>
+</div>

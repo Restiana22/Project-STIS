@@ -1,0 +1,84 @@
+<div class="w-full px-4 lg:px-8 py-6">
+  <!-- Header Section -->
+  <div class="mb-8">
+    <h1 class="text-2xl font-bold text-gray-800 dark:text-white mb-2">Manajemen Data Sekolah</h1>
+    <p class="text-gray-600 dark:text-gray-300">Kelola data jurusan dan mata pelajaran di sekolah Anda</p>
+  </div>
+
+  <!-- Action Buttons -->
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
+    <a href="#/sekolah_additem" class="bg-blue-600 hover:bg-blue-700 transition-colors text-white font-medium py-3 px-4 rounded-lg shadow-md flex items-center justify-center">
+      <i class="fas fa-plus-circle mr-2"></i> Tambah Data Sekolah
+    </a>
+    <a href="#/sekolah_uploaditem" class="bg-white dark:bg-gray-700 border border-blue-600 text-blue-600 dark:text-blue-400 hover:bg-blue-50 dark:hover:bg-gray-600 transition-colors font-medium py-3 px-4 rounded-lg shadow-md flex items-center justify-center">
+      <i class="fas fa-upload mr-2"></i> Upload Data Sekolah
+    </a>
+  </div>
+
+  <!-- Stats and Lists -->
+  <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+    <!-- Jurusan Card -->
+    <div class="bg-white dark:bg-gray-800 rounded-xl shadow-md overflow-hidden">
+      <div class="bg-blue-600 text-white px-5 py-4 flex justify-between items-center">
+        <div class="flex items-center">
+          <i class="fas fa-graduation-cap text-xl mr-3"></i>
+          <h2 class="text-lg font-semibold">Data Jurusan</h2>
+        </div>
+        <span class="text-sm bg-blue-800 px-2 py-1 rounded-full" id="total-jurusan">0</span>
+      </div>
+      
+      <div class="p-5">
+        <div class="mb-4 relative">
+          <input type="text" id="search-jurusan" placeholder="Cari jurusan..." class="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white rounded-lg pl-10">
+          <i class="fas fa-search absolute left-3 top-3 text-gray-400"></i>
+        </div>
+        
+        <div class="border-t border-gray-200 dark:border-gray-700 pt-4">
+          <ul id="list-jurusan" class="space-y-3 max-h-80 overflow-y-auto pr-2"></ul>
+          
+          <div id="empty-jurusan" class="text-center py-8 hidden">
+            <div class="text-gray-400 text-5xl mb-3">
+              <i class="fas fa-graduation-cap"></i>
+            </div>
+            <p class="text-gray-500 dark:text-gray-400 mb-2">Belum ada data jurusan</p>
+            <a href="#/sekolah_additem" class="text-blue-600 dark:text-blue-400 hover:underline font-medium">
+              Tambah jurusan pertama
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mapel Card -->
+    <div class="bg-white dark:bg-gray-800 rounded-xl shadow-md overflow-hidden">
+      <div class="bg-blue-600 text-white px-5 py-4 flex justify-between items-center">
+        <div class="flex items-center">
+          <i class="fas fa-book-open text-xl mr-3"></i>
+          <h2 class="text-lg font-semibold">Data Mata Pelajaran</h2>
+        </div>
+        <span class="text-sm bg-blue-800 px-2 py-1 rounded-full" id="total-mapel">0</span>
+      </div>
+      
+      <div class="p-5">
+        <div class="mb-4 relative">
+          <input type="text" id="search-mapel" placeholder="Cari mata pelajaran..." class="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white rounded-lg pl-10">
+          <i class="fas fa-search absolute left-3 top-3 text-gray-400"></i>
+        </div>
+        
+        <div class="border-t border-gray-200 dark:border-gray-700 pt-4">
+          <ul id="list-mapel" class="space-y-3 max-h-80 overflow-y-auto pr-2"></ul>
+          
+          <div id="empty-mapel" class="text-center py-8 hidden">
+            <div class="text-gray-400 text-5xl mb-3">
+              <i class="fas fa-book-open"></i>
+            </div>
+            <p class="text-gray-500 dark:text-gray-400 mb-2">Belum ada data mata pelajaran</p>
+            <a href="#/sekolah_additem" class="text-blue-600 dark:text-blue-400 hover:underline font-medium">
+              Tambah mata pelajaran pertama
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

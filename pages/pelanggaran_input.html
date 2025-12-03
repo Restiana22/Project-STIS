@@ -1,0 +1,27 @@
+<div class="bg-white dark:bg-gray-800 rounded-xl shadow p-6">
+  <h2 class="text-xl font-bold mb-4">Input Pelanggaran Siswa</h2>
+  
+  <div class="mb-4">
+    <label class="block mb-2">Pilih Siswa</label>
+    <select id="siswaSelect" class="w-full p-2 border rounded bg-gray-50 dark:bg-gray-700"></select>
+  </div>
+  
+  <div class="mb-4">
+    <label class="block mb-2">Jenis Pelanggaran</label>
+    <select id="jenisPelanggaran" class="w-full p-2 border rounded bg-gray-50 dark:bg-gray-700"></select>
+  </div>
+  
+  <div class="mb-4">
+    <label class="block mb-2">Tanggal</label>
+    <input type="date" id="tanggal" class="w-full p-2 border rounded bg-gray-50 dark:bg-gray-700">
+  </div>
+  
+  <div class="mb-4">
+    <label class="block mb-2">Keterangan</label>
+    <textarea id="keterangan" class="w-full p-2 border rounded bg-gray-50 dark:bg-gray-700"></textarea>
+  </div>
+  
+  <button onclick="submitPelanggaran()" class="w-full bg-blue-600 text-white py-2 rounded">
+    Simpan Pelanggaran
+  </button>
+</div>

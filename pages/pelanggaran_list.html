@@ -1,0 +1,53 @@
+<div class="w-full px-4 lg:px-8">
+  <div class="flex space-x-3 mb-4">
+    <button onclick="window.location.hash='#/pelanggaran_add'" 
+            class="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded shadow">
+      Tambah Jenis Pelanggaran
+    </button>
+    <button onclick="window.location.hash='#/pelanggaran_import'" 
+            class="bg-green-600 hover:bg-green-700 text-white font-semibold py-2 px-4 rounded shadow">
+      Import dari Excel
+    </button>
+  </div>
+</div>
+
+
+<div class="mt-6 overflow-x-auto bg-white dark:bg-gray-800 shadow rounded-xl p-4">
+  <table class="min-w-full divide-y divide-gray-200">
+    <thead class="bg-gray-50 dark:bg-gray-700">
+      <tr>
+        <th class="px-4 py-3 text-left">Tanggal</th>
+        <th class="px-4 py-3 text-left">User No (Nama)</th>
+        <th class="px-4 py-3 text-left">Jenis Pelanggaran</th>
+        <th class="px-4 py-3 text-left">Total Poin</th>
+        <th class="px-4 py-3 text-left">Keterangan</th>
+      </tr>
+    </thead>
+    <tbody id="user-pelanggaran-list">
+      <!-- Data akan diisi oleh JS -->
+    </tbody>
+  </table>
+</div>
+
+<div class="mt-8 p-4 bg-white dark:bg-gray-800 rounded-xl shadow">
+  <h3 class="text-lg font-semibold mb-4">Setting Peringatan</h3>
+  <table class="min-w-full">
+    <thead>
+      <tr>
+        <th class="px-4 py-2 text-left">Jenis Peringatan</th>
+        <th class="px-4 py-2 text-left">Batas Poin</th>
+      </tr>
+    </thead>
+    <tbody id="peringatan-list">
+      <!-- Data setting akan diisi -->
+    </tbody>
+  </table>
+</div>
+
+
+<div class="mt-6 overflow-x-auto bg-white dark:bg-gray-800 shadow rounded-xl p-4">
+  <h3 class="text-lg font-semibold mb-4">Master Jenis Pelanggaran</h3>
+  <div id="master-pelanggaran-container">
+    <!-- Data akan diisi dengan struktur kelompok -->
+  </div>
+</div>

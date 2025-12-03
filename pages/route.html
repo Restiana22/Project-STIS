@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SekolahDaringku.com</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+  <script src="../assets/js/supabase.js"></script>
+  <script src="https://unpkg.com/feather-icons"></script>
+  <script src="https://unpkg.com/vue@3/dist/vue.global.prod.js"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script src="https://cdn.sheetjs.com/xlsx-0.20.0/package/dist/xlsx.full.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
+    
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            primary: '#6366f1', // indigo-500
+            secondary: '#8b5cf6', // violet-500
+            accent: '#06b6d4', // cyan-500
+          }
+        }
+      }
+    };
+  </script>
+  <style>
+    .sidebar-expanded {
+      width: 16rem; /* w-64 */
+    }
+    .sidebar-collapsed {
+      width: 0;
+    }
+    @keyframes bookBounce {
+      0%, 100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-20px);
+      }
+    }
+    .loader-book {
+      animation: bookBounce 0.8s ease-in-out infinite;
+      display: inline-block;
+      border-radius: 4px;
+    }
+    .loader-delay-0 {
+      animation-delay: 0s;
+    }
+    .loader-delay-1 {
+      animation-delay: 0.2s;
+    }
+    .loader-delay-2 {
+      animation-delay: 0.4s;
+    }
+    .sticky-header {
+      position: sticky;
+      top: 0;
+      z-index: 40;
+      backdrop-filter: blur(8px);
+    }
+
+    #app {
+      padding-top: 0;
+    }
+
+    main#mainContent {
+      min-height: calc(100vh - 3.5rem);
+    }
+
+  /* Updated Colors with Purple Accent */
+    .glass-sidebar {
+      background: linear-gradient(135deg, rgba(59, 130, 246, 0.95) 0%, rgba(67, 56, 202, 0.15) 100%);
+      backdrop-filter: blur(8px);
+      border-right: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .glass-header {
+      background: linear-gradient(135deg, rgba(59, 130, 246, 0.98) 0%, rgba(67, 56, 202, 0.1) 100%);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .modern-bg {
+      background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+    }
+
+    .dark .modern-bg {
+      background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+    }
+
+    /* Ensure text contrast in light mode */
+    .light-mode-text {
+      color: #1e293b !important; /* slate-800 */
+    }
+
+    .dark .light-mode-text {
+      color: white !important;
+    }
+
+    .sidebar-collapsed #navMenu,
+    .sidebar-collapsed > div:last-child {
+      display: none !important;
+    }
+
+    /* Logo positioning */
+    .logo-container {
+      transition: all 0.3s ease;
+      margin-left: 1rem; /* Geser logo ke kanan */
+    }
+
+    .sidebar-collapsed .logo-container {
+      margin-left: 0.5rem;
+      justify-content: center;
+    }
+
+    /* Purple accent effects */
+    .purple-accent {
+      border-left: 3px solid rgba(139, 92, 246, 0.5);
+    }
+
+    .menu-item-hover:hover {
+      background: rgba(255, 255, 255, 0.15);
+      border-left: 3px solid rgba(139, 92, 246, 0.8);
+      transform: translateX(4px);
+    }
+
+    /* Optimized shadows with purple tint */
+    .floating-card {
+      box-shadow: 
+        0 4px 12px rgba(0, 0, 0, 0.08),
+        0 0 0 1px rgba(139, 92, 246, 0.05);
+    }
+
+    .floating-card:hover {
+      box-shadow: 
+        0 8px 20px rgba(0, 0, 0, 0.12),
+        0 0 0 1px rgba(139, 92, 246, 0.1);
+    }
+  </style>
+  <link rel="stylesheet" href="../assets/css/styles.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://uicdn.toast.com/tui-editor/latest/tui-editor.min.css">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="modern-bg text-gray-800 dark:text-gray-100 transition duration-300">
+<!-- Updated Header -->
+<header class="sticky-header glass-header shadow-xl py-2 px-2 sm:px-4 flex items-center justify-between">
+  <!-- Bagian Kiri: Logo dan Nama Sekolah -->
+  <div class="flex items-center space-x-2 min-w-0 flex-1 logo-container" style="margin-left: 2rem; padding-left: 0.5rem;">
+    <!-- Logo SekolahDaringku -->
+    <img src="../assets/img/logo.png" alt="Logo SekolahDaringku" class="h-6 w-6 sm:h-8 sm:w-8 flex-shrink-0">
+    <!-- Logo Sekolah -->
+    <img src="../assets/img/logosmk.png" alt="Logo Sekolah" class="h-6 w-6 sm:h-8 sm:w-8 flex-shrink-0">
+    <span id="schoolName" class="font-semibold text-white truncate text-xs sm:text-sm max-w-[100px] sm:max-w-xs light-mode-text">
+      SekolahDaringku x SMK Muhammadiyah Susukan
+    </span>
+  </div>
+  
+  <!-- Bagian Kanan: User Info dan Tombol -->
+  <div class="flex items-center space-x-1 sm:space-x-2 flex-shrink-0">
+    <!-- Dark Mode Toggle -->
+    <button id="toggleDark" class="text-base sm:text-lg text-white hover:bg-white/20 p-1 sm:p-2 rounded-full transition light-mode-text">
+      🌙
+    </button>
+    
+    <!-- User Profile -->
+    <button id="userProfileBtn" class="flex items-center space-x-2 text-white hover:text-white/80 transition glass-card px-3 py-1 rounded-full light-mode-text">
+      <i data-feather="user" class="w-4 h-4"></i>
+      <span id="headerUserName" class="font-medium text-sm"></span>
+    </button>
+    
+    <!-- Logout Button -->
+    <button id="headerLogoutBtn" class="flex items-center justify-center text-white hover:text-red-200 transition p-1 sm:p-2 rounded-full light-mode-text" title="Logout">
+      <i data-feather="log-out" class="w-4 h-4 sm:w-5 sm:h-5"></i>
+      <span class="hidden sm:inline ml-1">Logout</span>
+    </button>
+  </div>
+</header>
+  <div id="globalLoader" class="fixed inset-0 flex items-center justify-center bg-white/70 dark:bg-black/70 z-50 hidden">
+  <div class="flex items-end gap-2 h-20">
+    <div class="h-6 w-8 bg-blue-500 dark:bg-blue-400 loader-book loader-delay-0"></div>
+    <div class="h-8 w-8 bg-secondary loader-book loader-delay-1"></div>
+    <div class="h-10 w-8 bg-accent loader-book loader-delay-2"></div>
+  </div>
+</div>
+
+    <div id="app" class="relative min-h-screen flex">
+      <div id="sidebarToggleWrapper" class="fixed z-50 top-4 left-4">
+        <button id="toggleSidebar" class="group w-10 h-10 flex items-center justify-center rounded-full bg-white dark:bg-gray-700 shadow-lg z-50 floating-card">
+          <i data-feather="menu" class="w-5 h-5 text-primary"></i>
+        </button>
+      </div>
+      
+      <aside id="sidebar" class="py-3 shadow-xl glass-sidebar transition-all duration-300 sidebar-expanded" data-expanded="true">
+        <!-- Nav Menu dengan design modern -->
+        <nav id="navMenu" class="px-2 space-y-1 overflow-y-auto flex-1 mt-4">
+          <!-- Menu items akan di-generate oleh JS -->
+        </nav>
+
+        <!-- Footer dengan design modern -->
+        <div class="px-4 py-2 border-t border-white/20 mt-4">
+          <a href="#" id="logoutBtn" class="flex items-center gap-2 py-2 px-3 rounded menu-item-hover text-white/90 hover:text-white transition glass-card">
+            <i data-feather="log-out" class="w-5 h-5"></i>
+            <span class="logout-text">Logout</span>
+          </a>
+        </div>
+      </aside>
+      
+      <main id="mainContent" class="flex-1 px-4 py-6 lg:px-8 lg:py-6 transition-all duration-300">
+        <!-- Content akan diisi oleh Vue -->
+      </main>
+
+
+    </div>
+  </body>
+  <script src="../assets/js/main.js"></script>
+  <script src="../assets/js/route.js"></script>
+</html>

@@ -1,0 +1,88 @@
+<div class="container">
+        <div class="header">
+            <h1><i class="fas fa-file-excel"></i> Upload Massal Informasi Sekolah</h1>
+            <p>Upload data jurusan dan mata pelajaran sekaligus menggunakan file Excel. Hemat waktu dan lebih efisien!</p>
+        </div>
+
+        <div class="card">
+            <h2 class="card-title"><i class="fas fa-file-download"></i> Template Excel</h2>
+            <p>Download template Excel untuk memudahkan pengisian data:</p>
+            
+            <div class="template-section">
+                <div class="template-content">
+                    <div class="template-icon">
+                        <i class="fas fa-file-excel"></i>
+                    </div>
+                    <div>
+                        <h3>Template Informasi Sekolah</h3>
+                        <p>Format file .xlsx</p>
+                    </div>
+                </div>
+                <button class="btn btn-outline" id="downloadTemplate">
+                    <i class="fas fa-download"></i> Download Template
+                </button>
+            </div>
+            
+            <div class="instructions">
+                <h3><i class="fas fa-info-circle"></i> Petunjuk Pengisian</h3>
+                <ol class="instructions-list">
+                    <li>Gunakan template yang telah disediakan</li>
+                    <li>Kolom <span class="code">JENIS</span> harus diisi dengan "jurusan" atau "mapel" (huruf kecil)</li>
+                    <li>Untuk jurusan: isi <span class="code">KODE</span> dan <span class="code">NAMA</span></li>
+                    <li>Untuk mapel: isi <span class="code">KODE</span>, <span class="code">NAMA</span>, <span class="code">SEMESTER</span>, dan <span class="code">JURUSAN</span> (kode jurusan)</li>
+                    <li>Pastikan kode jurusan untuk mapel sudah ada di sistem</li>
+                    <li>Jangan mengubah struktur kolom dalam template</li>
+                </ol>
+            </div>
+        </div>
+        
+        <div class="card">
+            <h2 class="card-title"><i class="fas fa-cloud-upload-alt"></i> Upload Data</h2>
+            <div class="upload-container" id="dropZone">
+                <div class="upload-icon">
+                    <i class="fas fa-file-excel"></i>
+                </div>
+                <div>
+                    <h3>Seret file Excel ke sini</h3>
+                    <p>Atau klik untuk memilih file</p>
+                </div>
+                <input type="file" id="fileInput" accept=".xlsx, .xls" class="hidden">
+                <button class="btn" id="selectFileBtn" style="margin-top: 20px;">
+                    <i class="fas fa-folder-open"></i> Pilih File Excel
+                </button>
+                <div class="file-info" id="fileInfo" style="margin-top: 20px;"></div>
+            </div>
+            
+            <div class="preview-container hidden" id="previewContainer">
+                <h3 class="card-title"><i class="fas fa-table"></i> Preview Data</h3>
+                <table id="previewTable">
+                    <thead>
+                        <tr>
+                            <th>JENIS</th>
+                            <th>KODE</th>
+                            <th>NAMA</th>
+                            <th>SEMESTER</th>
+                            <th>JURUSAN</th>
+                            <th>STATUS</th>
+                        </tr>
+                    </thead>
+                    <tbody id="previewBody"></tbody>
+                </table>
+                <div class="progress-container">
+                    <div class="progress-header">
+                        <span>Status Upload</span>
+                        <span id="progressPercent">0%</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="progressFill"></div>
+                    </div>
+                    <div id="progressDetails" style="margin-top: 10px;">
+                        Menunggu proses upload...
+                    </div>
+                </div>
+                <button class="btn btn-success btn-full hidden" id="uploadBtn">
+                    <i class="fas fa-cloud-upload-alt"></i> Proses Upload
+                </button>
+            </div>
+        </div>
+    </div>
