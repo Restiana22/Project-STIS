@@ -1,0 +1,9 @@
+<script>
+    const user = JSON.parse(localStorage.getItem('user'));
+    const schoolConfig = JSON.parse(localStorage.getItem('schoolConfig')) || {};
+    if (user && user.id && schoolConfig.id) {
+        window.location.href = "pages/route.html";
+    } else {
+        window.location.href = "pages/login.html";
+    }
+</script>
