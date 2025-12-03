@@ -1,0 +1,20 @@
+{
+  "id": "sekolahA",
+  "name": "Sekolah A",
+  "kode_sekolah": "SCH001",
+  "theme": {
+    "primaryColor": "#3b82f6",
+    "secondaryColor": "#1e40af"
+  },
+  "menuOverrides": {
+    "guru": {
+      "remove": ["kehadiran_list"]
+    }
+  },
+  "customMenus": {
+    "admin": [
+      ["Laporan Khusus", "laporan_khusus.html"]
+    ]
+  },
+  "customDashboard": true
+}
