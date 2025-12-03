@@ -1,0 +1,27 @@
+body {
+    font-family: sans-serif;
+    padding: 1rem;
+  }
+  
+  nav {
+    margin-bottom: 1rem;
+  }
+  
+  nav a {
+    margin-right: 1rem;
+    text-decoration: none;
+    color: #444;
+  }
+  
+  nav a.active {
+    font-weight: bold;
+    color: blue;
+  }
+  
+  footer {
+    margin-top: 2rem;
+    font-size: 0.9rem;
+    color: #666;
+  }
+  
+  

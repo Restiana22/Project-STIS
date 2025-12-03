@@ -1,0 +1,594 @@
+body {
+    font-family: sans-serif;
+    padding: 1rem;
+  }
+  
+  nav {
+    margin-bottom: 1rem;
+  }
+  
+  nav a {
+    margin-right: 1rem;
+    text-decoration: none;
+    color: #444;
+  }
+  
+  nav a.active {
+    font-weight: bold;
+    color: blue;
+  }
+  
+  footer {
+    margin-top: 2rem;
+    font-size: 0.9rem;
+    color: #666;
+  }
+  
+
+  .fade-out {
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+  
+  .fade-in {
+    opacity: 1;
+    transition: opacity 0.3s ease;
+  }
+  
+
+  /* Tambahkan ini ke CSS Anda */
+.relative {
+  position: relative;
+}
+.overflow-x-auto {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch; /* Untuk scroll halus di mobile */
+}
+.overflow-x-auto::-webkit-scrollbar {
+  height: 8px;
+}
+.overflow-x-auto::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 4px;
+}
+.overflow-x-auto::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 4px;
+}
+.overflow-x-auto::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+/* Pastikan main content tidak overflow */
+#mainContent {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+/* Perbaikan untuk sticky columns */
+.sticky-column {
+  position: sticky;
+  left: 0;
+  z-index: 10;
+  background: inherit;
+}
+.sticky-column-checkbox {
+  position: sticky;
+  left: 48px; /* Sesuaikan dengan lebar checkbox column */
+  z-index: 10;
+  background: inherit;
+}
+
+/* Perbaikan icon night mode saat collapse */
+#sidebar.sidebar-collapsed #toggleDark {
+  display: none; /* Sembunyikan saat sidebar collapsed */
+}
+
+/* Padding dan margin lebih konsisten */
+#sidebar {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+#navMenu {
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+}
+
+/* Pastikan feather icons ukuran konsisten */
+#sidebar i {
+  width: 1.25rem;
+  height: 1.25rem;
+  flex-shrink: 0;
+}
+#sidebar {
+  transition-property: width, transform;
+  transition-duration: 200ms;
+  transition-timing-function: ease-out;
+}
+
+#navMenu a {
+  transition: background-color 150ms ease;
+}
+
+/* Tambahkan di akhir file styles.css */
+.grouped-cell {
+  max-width: 200px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.grouped-cell.expandable {
+  cursor: pointer;
+  position: relative;
+}
+
+.grouped-cell.expandable:hover::after {
+  content: 'Lihat semua';
+  position: absolute;
+  right: 5px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 0.7rem;
+  color: #3b82f6;
+  background: white;
+  padding: 2px 5px;
+  border-radius: 3px;
+  border: 1px solid #e5e7eb;
+}
+
+/* Untuk mode dark */
+.dark .grouped-cell.expandable:hover::after {
+  background: #374151;
+  color: #60a5fa;
+  border: 1px solid #4b5563;
+}
+
+.download-btn {
+  transition: all 0.3s ease;
+}
+
+.download-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Breakpoint untuk device sangat kecil */
+@media (max-width: 360px) {
+  .xs\:flex {
+    display: flex !important;
+  }
+}
+
+@media (max-width: 320px) {
+  .xs\:flex {
+    display: none !important;
+  }
+  
+  #schoolName {
+    max-width: 80px !important;
+    font-size: 0.7rem !important;
+  }
+}
+
+/* Optimasi untuk tablet kecil */
+@media (max-width: 768px) {
+  #sidebarToggleWrapper {
+    top: 0.5rem;
+    left: 0.5rem;
+  }
+  
+  #toggleSidebar {
+    width: 2rem;
+    height: 2rem;
+    font-size: 0.8rem;
+  }
+}
+
+/* Pastikan konten utama tidak tertutup header */
+main#mainContent {
+  min-height: calc(100vh - 3rem); /* Sesuaikan dengan tinggi header mobile */
+}
+
+@media (min-width: 640px) {
+  main#mainContent {
+    min-height: calc(100vh - 3.5rem); /* Tinggi header desktop */
+  }
+}
+
+.fade-in {
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.tingkat-option {
+    transition: all 0.2s ease;
+}
+
+.tingkat-option:hover {
+    transform: translateX(5px);
+    background-color: #f3f4f6;
+}
+
+.dark .tingkat-option:hover {
+    background-color: #374151;
+}
+
+/* Tambahkan styling untuk halaman import */
+.border-dashed:hover {
+    border-color: #3b82f6;
+    background-color: #f8fafc;
+}
+
+.dark .border-dashed:hover {
+    border-color: #60a5fa;
+    background-color: #1e293b;
+}
+
+.progress-bar {
+    transition: width 0.3s ease-in-out;
+}
+
+/* Animasi untuk success */
+@keyframes bounce {
+    0%, 20%, 53%, 80%, 100% {
+        transform: translate3d(0,0,0);
+    }
+    40%, 43% {
+        transform: translate3d(0,-30px,0);
+    }
+    70% {
+        transform: translate3d(0,-15px,0);
+    }
+    90% {
+        transform: translate3d(0,-4px,0);
+    }
+}
+
+.bounce {
+    animation: bounce 1s ease-in-out;
+}
+
+.lokasi-container {
+  border-left: 3px solid #e2e8f0;
+  padding-left: 8px;
+}
+
+.lokasi-masuk, .lokasi-keluar {
+  margin-bottom: 4px;
+}
+
+.lokasi-koordinat {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 4px;
+}
+
+
+
+
+
+
+/* Enhanced Submit Button */
+.submit-btn-enhanced {
+  background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+  color: white;
+  border: none;
+  border-radius: 12px;
+  padding: 18px 24px;
+  font-weight: 700;
+  font-size: 1.1rem;
+  transition: all 0.4s ease;
+  box-shadow: 
+    0 8px 20px rgba(59, 130, 246, 0.3),
+    0 4px 6px rgba(0, 0, 0, 0.1);
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 64px;
+}
+
+.submit-btn-enhanced::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+  transition: left 0.6s;
+}
+
+.submit-btn-enhanced:hover::before {
+  left: 100%;
+}
+
+.submit-btn-enhanced:hover:not(.processing) {
+  transform: translateY(-3px);
+  box-shadow: 
+    0 12px 30px rgba(59, 130, 246, 0.4),
+    0 6px 10px rgba(0, 0, 0, 0.15);
+}
+
+.submit-btn-enhanced:active {
+  transform: translateY(-1px);
+}
+
+.submit-btn-enhanced.processing {
+  background: linear-gradient(135deg, #6b7280 0%, #4b5563 100%);
+  cursor: not-allowed;
+  transform: none;
+}
+
+.submit-btn-enhanced:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* Success and Error States */
+.submit-btn-enhanced.success {
+  background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+}
+
+.submit-btn-enhanced.error {
+  background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+}
+
+/* Loading Animation */
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.7; }
+}
+
+.submit-btn-enhanced.processing {
+  animation: pulse 1.5s ease-in-out infinite;
+}
+
+/* Performance Warning */
+.performance-warning {
+  background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+  border: 1px solid #f59e0b;
+  border-radius: 8px;
+  padding: 12px 16px;
+  margin-top: 16px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.dark .performance-warning {
+  background: linear-gradient(135deg, #78350f 0%, #92400e 100%);
+  border-color: #d97706;
+}
+
+.performance-warning i {
+  color: #d97706;
+  font-size: 1.2rem;
+}
+
+.performance-warning-text {
+  font-size: 0.875rem;
+  color: #92400e;
+}
+
+.dark .performance-warning-text {
+  color: #fde68a;
+}
+
+/* Additional Optimizations for Large Data */
+.large-data-warning {
+  display: none;
+  background: #fffbeb;
+  border: 1px solid #fbbf24;
+  border-radius: 8px;
+  padding: 12px;
+  margin: 16px 0;
+  text-align: center;
+}
+
+.large-data-warning.show {
+  display: block;
+}
+
+.data-count-badge {
+  background: #3b82f6;
+  color: white;
+  padding: 4px 8px;
+  border-radius: 12px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  margin-left: 8px;
+}
+
+/* Optimized Table Rendering */
+.laporan-table-enhanced {
+  will-change: transform;
+}
+
+.laporan-tr {
+  contain: layout style;
+}
+
+/* Print-specific optimizations */
+@media print {
+  .submit-btn-enhanced,
+  .filter-form-enhanced {
+    display: none !important;
+  }
+}
+
+/* Mobile optimizations */
+@media (max-width: 768px) {
+  .submit-btn-enhanced {
+    padding: 16px 20px;
+    font-size: 1rem;
+    min-height: 56px;
+  }
+  
+  .form-input-enhanced {
+    font-size: 16px; /* Prevent zoom on iOS */
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .submit-btn-enhanced {
+    border: 2px solid white;
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  .submit-btn-enhanced {
+    transition: none;
+  }
+  
+  .submit-btn-enhanced::before {
+    display: none;
+  }
+  
+  .submit-btn-enhanced:hover {
+    transform: none;
+  }
+}
+/* Gradient Animations */
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.animated-gradient {
+  background: linear-gradient(-45deg, #3b82f6, #8b5cf6, #ec4899, #06b6d4);
+  background-size: 400% 400%;
+  animation: gradientShift 15s ease infinite;
+}
+
+/* Hover Effects */
+.floating-card {
+  transition: all 0.3s ease;
+  transform: translateY(0);
+}
+
+.floating-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+}
+
+.dark .floating-card:hover {
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+
+/* Glassmorphism */
+.glass-effect {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.dark .glass-effect {
+  background: rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Smooth transitions */
+* {
+  transition: color 0.3s ease, background-color 0.3s ease, border-color 0.3s ease;
+}
+
+
+/* Grid auto rows untuk konsistensi tinggi card */
+.auto-rows-fr {
+  grid-auto-rows: 1fr;
+}
+
+/* Pastikan card memiliki tinggi penuh dan konten terdistribusi dengan baik */
+.h-full {
+  height: 100%;
+}
+
+.flex-1 {
+  flex: 1 1 0%;
+}
+
+.mt-auto {
+  margin-top: auto;
+}
+
+/* Smooth transitions untuk semua elemen */
+* {
+  transition-property: color, background-color, border-color, transform, box-shadow;
+  transition-duration: 200ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Loading animation improvements */
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.animate-spin {
+  animation: spin 1s linear infinite;
+}
+
+
+/* Enhanced Button Styles */
+.btn-modern {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border: none;
+  border-radius: 12px;
+  padding: 12px 24px;
+  font-weight: 600;
+  color: white;
+  box-shadow: 0 4px 15px 0 rgba(116, 75, 162, 0.3);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-modern:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px 0 rgba(116, 75, 162, 0.4);
+}
+
+.btn-modern:active {
+  transform: translateY(0);
+}
+
+.btn-modern::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+  transition: left 0.5s;
+}
+
+.btn-modern:hover::before {
+  left: 100%;
+}
+
+/* Grid responsiveness */
+@media (max-width: 768px) {
+  .grid.grid-cols-1.md\:grid-cols-2 {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Feather icon alignment */
+button .feather {
+  width: 18px;
+  height: 18px;
+}

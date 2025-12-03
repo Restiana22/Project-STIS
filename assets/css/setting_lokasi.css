@@ -1,0 +1,59 @@
+  /* Style untuk peta */
+  #mapContainer {
+    z-index: 1;
+  }
+
+  /* Style untuk slider */
+  input[type="range"] {
+    -webkit-appearance: none;
+    height: 8px;
+    background: #d1d5db;
+    border-radius: 5px;
+  }
+
+  input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: #3b82f6;
+    cursor: pointer;
+  }
+
+  /* Dark mode support */
+  .dark input[type="range"] {
+    background: #4b5563;
+  }
+
+  .dark input[type="range"]::-webkit-slider-thumb {
+    background: #60a5fa;
+  }
+
+  /* Style untuk hasil pencarian */
+  #searchResults {
+    background: white;
+    z-index: 1000;
+  }
+
+  .dark #searchResults {
+    background: #374151;
+    color: white;
+  }
+
+  #searchResults div {
+    border-bottom: 1px solid #e5e7eb;
+    padding: 8px;
+    cursor: pointer;
+  }
+
+  .dark #searchResults div {
+    border-bottom: 1px solid #4b5563;
+  }
+
+  #searchResults div:hover {
+    background-color: #f3f4f6;
+  }
+
+  .dark #searchResults div:hover {
+    background-color: #4b5563;
+  }

@@ -1,0 +1,16 @@
+/* Untuk checkbox header */
+#checkAll {
+  transform: scale(1.2);
+  margin: 0;
+}
+
+.studentCheckbox {
+  transform: scale(1.1);
+  margin: 0;
+}
+
+/* Untuk tombol update */
+#updateButton:disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+}

@@ -1,0 +1,173 @@
+header {
+  padding-left: 1rem !important;
+  padding-right: 1rem !important;
+}
+
+#schoolName {
+  font-size: 0.9rem;
+  max-width: 200px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* PERBAIKAN SIDEBAR ICONS */
+#sidebar i[data-feather] {
+  width: 20px;
+  height: 20px;
+  stroke-width: 1.5;
+}
+
+/* Pastikan sidebar tidak ketutup */
+#sidebar {
+  z-index: 1000;
+  height: 100vh;
+  overflow-y: auto;
+}
+
+/* PERBAIKAN TOGGLE BUTTON POSITION */
+#toggleSidebarWrapper {
+  position: fixed;
+  top: 80px; /* Sesuaikan dengan tinggi header */
+  left: 20px;
+  z-index: 1001;
+}
+
+#toggleSidebar {
+  background: white;
+  border: 1px solid #e5e7eb;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.dark #toggleSidebar {
+  background: #374151;
+  border-color: #4b5563;
+}
+
+/* PERBAIKAN MAIN CONTENT MARGIN */
+#mainContent {
+  margin-left: 16rem;
+  transition: margin-left 0.3s ease;
+  min-height: calc(100vh - 4rem);
+}
+
+.sidebar-collapsed + #mainContent,
+#sidebar[data-expanded="false"] + #mainContent {
+  margin-left: 0;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  #mainContent {
+    margin-left: 0;
+    padding: 1rem;
+  }
+  
+  #sidebar {
+    position: fixed;
+    height: 100vh;
+  }
+  
+  .sidebar-collapsed {
+    transform: translateX(-100%);
+  }
+  
+  .sidebar-expanded {
+    transform: translateX(0);
+  }
+}
+
+#sidebarToggleWrapper {
+  z-index: 60; /* Lebih tinggi dari header */
+}
+
+@media (max-width: 768px) {
+  #sidebar {
+    position: fixed;
+    height: 100vh;
+    z-index: 55;
+  }
+  
+  .sidebar-expanded {
+    width: 100% !important; /* Full screen di mobile */
+  }
+  
+  /* Overlay untuk menutup sidebar */
+  .sidebar-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0,0,0,0.5);
+    z-index: 54;
+    display: none;
+  }
+  
+  .sidebar-overlay.active {
+    display: block;
+  }
+}
+
+#sidebar {
+  color: #1e293b; /* Warna gelap untuk light mode */
+}
+
+#sidebar a {
+  color: #1e293b; /* Warna gelap untuk link di light mode */
+}
+
+#sidebar .hover\\:text-white {
+  color: #4b5563 !important; /* Warna abu-abu gelap untuk light mode */
+}
+
+#sidebar .hover\\:text-white:hover {
+  color: #1e293b !important; /* Warna lebih gelap saat hover */
+}
+
+/* Pastikan dark mode tetap bekerja */
+.dark #sidebar {
+  color: white;
+}
+
+.dark #sidebar a {
+  color: white;
+}
+
+.dark #sidebar .text-white{
+  color: rgba(255, 255, 255, 0.8) !important;
+}
+
+.dark #sidebar .hover\\:text-white:hover {
+  color: white !important;
+}
+/* PERBAIKAN POSISI LOGO */
+.logo-container {
+  transition: all 0.3s ease;
+  margin-left: 2rem !important; /* Ditambah dari 1rem ke 2rem */
+  padding-left: 0.5rem; /* Tambahan padding untuk jarak lebih */
+}
+
+.sidebar-collapsed .logo-container {
+  margin-left: 1rem !important;
+  justify-content: center;
+  padding-left: 0;
+}
+
+/* Pastikan logo tidak tertutup toggle button */
+#sidebarToggleWrapper {
+  z-index: 60;
+  top: 1rem;
+  left: 1rem;
+}
+
+@media (max-width: 768px) {
+  .logo-container {
+    margin-left: 1.5rem !important;
+  }
+  
+  #sidebarToggleWrapper {
+    top: 0.5rem;
+    left: 0.5rem;
+  }
+}
