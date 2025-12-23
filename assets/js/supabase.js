@@ -1,5 +1,5 @@
-const SUPABASE_URL = "https://loveyouree.supabase.co";
-const SUPABASE_KEY = "loveyouree.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImtjcndoY3lpdGdka2xoem51c21qIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDM3NjAxNDYsImV4cCI6MjA1OTMzNjE0Nn0.ThO9kNN52qy70Xeqd1enPV3OZPjrkCI30wuyelqG1Q4";
+const SUPABASE_URL = "https://gcfbacgemevxgrikfgyc.supabase.co/";
+const SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImdjZmJhY2dlbWV2eGdyaWtmZ3ljIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjM5NTE0MzAsImV4cCI6MjA3OTUyNzQzMH0.wHKlRqj-iY1cIvegUes4D7vF_qYkcCWVHoY9NVvenDk";
 const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 
 async function testConnection() {
