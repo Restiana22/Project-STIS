@@ -1,7 +1,15 @@
 const SUPABASE_URL = "https://gcfbacgemevxgrikfgyc.supabase.co/";
 const SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImdjZmJhY2dlbWV2eGdyaWtmZ3ljIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjM5NTE0MzAsImV4cCI6MjA3OTUyNzQzMH0.wHKlRqj-iY1cIvegUes4D7vF_qYkcCWVHoY9NVvenDk";
-const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
-
+// const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+const supabaseClient = (window.supabase && typeof window.supabase.from === 'function')
+  ? window.supabase
+  : (window.supabase && typeof window.supabase.createClient === 'function'
+      ? window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY)
+      : null);
+window.supabaseClient = supabaseClient;
+if (supabaseClient) {
+  window.supabase = supabaseClient; // keep backward compatibility
+}
 async function testConnection() {
   const { data, error } = await supabase.from('users').select('*').limit(1);
   if (error) {
@@ -2266,7 +2274,7 @@ async function getNilaiRataRataSiswa(id_siswa, id_sekolah) {
 }
 
 
-
+// window.supabase = supabase;
 window.formatLokasiDisplay = formatLokasiDisplay;
 window.getNilaiBySiswa = getNilaiBySiswa;
 window.getNilaiRataRataSiswa = getNilaiRataRataSiswa;
