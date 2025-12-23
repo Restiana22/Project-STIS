@@ -1,5 +1,6 @@
 document.getElementById('loginForm').addEventListener('submit', async function(e) {
   e.preventDefault();
+  
   await loading();
   try {
     const user_no = document.getElementById('user_no').value.trim();
@@ -84,3 +85,18 @@ document.addEventListener('DOMContentLoaded', function() {
     window.location.href = "route.html";
   }
 });
+
+async function loading() {
+  const loader = document.getElementById("globalLoader");
+  if (loader) {
+    loader.classList.remove("hidden");
+  }
+  return true;
+}
+async function loadingout() {
+  const loader = document.getElementById("globalLoader");
+  if (loader) {
+    loader.classList.add("hidden");
+  }
+  return true;
+}
