@@ -365,8 +365,8 @@ function updateSchoolBranding() {
   const schoolNameEl = document.getElementById('schoolName');
   if (schoolNameEl) {
     const schoolName = schoolConfig.nama_sekolah ? 
-      `Sedaku x ${schoolConfig.nama_sekolah}` : // ✅ SINGKATKAN NAMA
-      'Sedaku';
+      `STIF x ${schoolConfig.nama_sekolah}` : // ✅ SINGKATKAN NAMA
+      'STIF';
     schoolNameEl.textContent = schoolName;
   }
 }
