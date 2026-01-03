@@ -4,7 +4,7 @@ export async function initPage() {
   if (refreshBtn) {
     refreshBtn.addEventListener('click', initPage);
   }
-  if (user.role !== 'kesiswaan' && user.role !== 'kurikulum' && user.role !== 'kepsek' && user.role !== 'admin') {
+  if (user.role !== 'instruktur'&& user.role !== 'admin') {
     document.getElementById('mainContent').innerHTML = `
       <div class="p-6 text-red-500">
         Anda tidak memiliki akses ke halaman ini.

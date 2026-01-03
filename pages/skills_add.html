@@ -1,0 +1,21 @@
+<div class="bg-white dark:bg-gray-800 rounded-xl shadow p-6">
+  <h2 class="text-xl font-bold mb-6" id="form-title">Tambah Jenis Skill Baru</h2>
+  
+  <div class="space-y-4">
+    
+    <div class="mb-4">
+      <label class="block mb-2">Nama Skill</label>
+      <input type="text" id="nama-skill" class="w-full p-2 border rounded bg-gray-50 dark:bg-gray-700">
+    </div>
+    
+  </div>
+  
+  <div class="mt-6 flex space-x-3">
+    <button onclick="window.location.hash='#/skills'" class="flex-1 bg-gray-200 hover:bg-gray-300 text-gray-800 font-semibold py-2 px-4 rounded">
+      Batal
+    </button>
+    <button onclick="tambahSkills()" class="flex-1 bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded">
+      Simpan
+    </button>
+  </div>
+</div>

@@ -12,7 +12,7 @@ export async function initPage() {
   const quickAbsensiBtn = document.getElementById('quickAbsensi');
   const quickAbsensiContainer = document.getElementById('quickAbsensiContainer');
   if (quickAbsensiBtn && user.role != '1') {
-    quickAbsensiContainer.classList.remove('hidden');
+    // quickAbsensiContainer.classList.remove('hidden');
     quickAbsensiBtn.classList.remove('hidden');
     quickAbsensiBtn.addEventListener('click', () => {
       window.location.hash = '#/kehadiran_add';
