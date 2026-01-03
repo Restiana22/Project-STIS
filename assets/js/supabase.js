@@ -111,6 +111,12 @@ async function getUserById(id) {
   const { data, error } = await supabase.from('users').select('*').eq('id', id).single();
   return { data, error };
 }
+
+
+async function getSkillsByUserId() {
+  const { data, error } = await supabase.from('skills').select('*');
+  return { data, error };
+}
 async function getAbsenById(user_id, tanggal) {
   const { data, error } = await supabase.from('kehadiran').select('*').eq('id_user', user_id).eq('tanggal', tanggal);
   return { data, error };

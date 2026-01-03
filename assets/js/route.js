@@ -71,6 +71,10 @@ const user = JSON.parse(localStorage.getItem('user'));
 const schoolConfig = JSON.parse(localStorage.getItem('schoolConfig')) || {};
 const navIcons = {
   "Dashboard": "layout",
+  "Skills" : "star",
+  "CV" : "file-text",
+  "Izin" : "check-circle",
+
   "Informasi Sekolah": "info", // ✅ DIPERBAIKI
   "Data Diri": "user",
   "Download App": "download",
@@ -126,25 +130,9 @@ const iconColors = {
   "Game": "text-pink-500"
 };
 const baseRoleMenus = {
-  kepsek: [
-    ["Dashboard", "dashboard.html"],
-    ["Informasi Sekolah", "sekolah_listitem.html"],
-    ["Informasi Pengguna", "users_list.html"],
-    ["Manajemen Pelanggaran", "pelanggaran_list.html"],
-    ["Input Pelanggaran", "pelanggaran_input.html"],
-    ["Kehadiran", "kehadiran_list.html"],
-    ["Persetujuan Izin", "izin_approval.html"],
-    ["Keuangan", "keuangan_dashboard.html"],
-    ["Jadwal Mengajar", "jadwalmengajar_list.html"],
-    ["Materi", "materi_list.html"],
-    ["Tambah Tugas", "tugas_list.html"],
-    ["Input Nilai", "inputnilai.html"],
-    ["Laporan", "laporan_list.html"],
-    ["Update Semester Siswa", "semester_update.html"],
-    ["Download App", "icebreak.html"],
-  ],
   admin: [
     ["Dashboard", "dashboard.html"],
+    ["Skills", "skills.html"],
     ["Informasi Sekolah", "sekolah_listitem.html"],
     ["Informasi Pengguna", "users_list.html"],
     ["Manajemen Pelanggaran", "pelanggaran_list.html"],
@@ -160,68 +148,15 @@ const baseRoleMenus = {
     ["Update Semester Siswa", "semester_update.html"],
     ["Download App", "icebreak.html"],
   ],
-  guru: [
+  instruktur: [
     ["Dashboard", "dashboard.html"],
-    ["Kehadiran", "kehadiran_list.html"],
-    ["Piket", "piket_absensi.html"],
-    ["Jadwal Mengajar", "jadwalmengajar_list.html"],
-    ["Materi", "materi_list.html"],
-    ["Tambah Tugas", "tugas_list.html"],
-    ["Input Nilai", "inputnilai.html"],
-    ["Keuangan", "guru_keuangan.html"],
-    ["Laporan", "laporan_list.html"],
-    ["Download App", "icebreak.html"],
+    ["Izin", "izin_approval.html"],
   ],
-  siswa: [
+  peserta: [
     ["Dashboard", "dashboard.html"],
-    ["Kehadiran", "kehadiran_list.html"],
-    ["Kegiatan Dirumah", "kegiatan_list.html"],
-    ["Jadwal Pelajaran", "jadwalpelajaran_list.html"],
-    ["Mata Pelajaran", "mapelsiswa_list.html"],
-    ["Tugas", "tugassiswa_list.html"],
-    ["Keuangan", "siswa_keuangan.html"],
-    ["Laporan", "laporan_list.html"],
-    ["Download App", "icebreak.html"],
-  ],
-  kesiswaan: [
-    ["Dashboard", "dashboard.html"],
-    ["Kehadiran", "kehadiran_list.html"],
-    ["Persetujuan Izin", "izin_approval.html"],
-    ["Manajemen Pelanggaran", "pelanggaran_list.html"],
-    ["Input Pelanggaran", "pelanggaran_input.html"],
-    ["Setting Peringatan", "pelanggaran_setting.html"],
-    ["Laporan", "laporan_list.html"],
-    ["Download App", "icebreak.html"],
-  ],
-  kurikulum: [
-    ["Dashboard", "dashboard.html"],
-    ["Kehadiran", "kehadiran_list.html"],
-    ["Persetujuan Izin", "izin_approval.html"],
-    ["Jadwal Mengajar", "jadwalmengajar_list.html"],
-    ["Materi", "materi_list.html"],
-    ["Tambah Tugas", "tugas_list.html"],
-    ["Input Nilai", "inputnilai.html"],
-    ["Laporan", "laporan_list.html"],
-    ["Download App", "icebreak.html"],
-  ],
-  keuangan: [
-    ["Dashboard", "dashboard.html"],
-    ["Kehadiran", "kehadiran_list.html"],
-    ["Keuangan", "keuangan_dashboard.html"],
-    ["Laporan", "laporan_list.html"],
-    ["Download App", "icebreak.html"],
-  ],
-  karyawan: [
-    ["Dashboard", "dashboard.html"],
-    ["Kehadiran", "kehadiran_list.html"],
-    ["Laporan", "laporan_list.html"],
-    ["Download App", "icebreak.html"],
-  ],
-  wali: [
-    ["Dashboard", "dashboard.html"],
-    ["Laporan Keuangan Siswa", "laporan_keuangan.html"],
-    ["Laporan Absensi Siswa", "laporan_kehadiran.html"],
-    ["Laporan Nilai", "laporan_nilai.html"],
+    ["Skills", "skills.html"],
+    ["CV", "cv.html"],
+    ["Izin", "izin_list.html"],
   ],
 };
 function generateMenu() {
