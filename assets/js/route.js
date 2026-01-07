@@ -133,20 +133,6 @@ const baseRoleMenus = {
   admin: [
     ["Dashboard", "dashboard.html"],
     ["Skills", "skills.html"],
-    ["Informasi Sekolah", "sekolah_listitem.html"],
-    ["Informasi Pengguna", "users_list.html"],
-    ["Manajemen Pelanggaran", "pelanggaran_list.html"],
-    ["Input Pelanggaran", "pelanggaran_input.html"],
-    ["Kehadiran", "kehadiran_list.html"],
-    ["Persetujuan Izin", "izin_approval.html"],
-    ["Keuangan", "keuangan_dashboard.html"],
-    ["Jadwal Mengajar", "jadwalmengajar_list.html"],
-    ["Materi", "materi_list.html"],
-    ["Tambah Tugas", "tugas_list.html"],
-    ["Input Nilai", "inputnilai.html"],
-    ["Laporan", "laporan_list.html"],
-    ["Update Semester Siswa", "semester_update.html"],
-    ["Download App", "icebreak.html"],
   ],
   instruktur: [
     ["Dashboard", "dashboard.html"],
@@ -300,8 +286,8 @@ function updateSchoolBranding() {
   const schoolNameEl = document.getElementById('schoolName');
   if (schoolNameEl) {
     const schoolName = schoolConfig.nama_sekolah ? 
-      `STIF x ${schoolConfig.nama_sekolah}` : // ✅ SINGKATKAN NAMA
-      'STIF';
+      `SIVOKASI` : // ✅ SINGKATKAN NAMA
+      'SIVOKASI';
     schoolNameEl.textContent = schoolName;
   }
 }
